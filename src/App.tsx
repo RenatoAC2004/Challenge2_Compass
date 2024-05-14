@@ -1,11 +1,7 @@
-import "./App.css";
+import { MainRoutes } from "./router/routes";
 
-function App() {
+export const App = () => {
   return (
-    <>
-      <h1 className="text-4xl">Início do projeto</h1>
-    </>
+    <MainRoutes />
   );
 }
-
-export default App;
