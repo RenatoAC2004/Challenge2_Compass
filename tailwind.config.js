@@ -2,7 +2,16 @@
 module.exports = {
   content: ["./src/**/*.{html,js,jsx,ts,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily:{
+        inter:["Inter",'sans-serif'],
+        garamond:["EB Garamond", 'sans-serif'],
+      },
+      colors:{
+        BackgroundAboutUs: '#F0F1EE',
+        moss: "#354733",
+      },
+    },
   },
   plugins: [],
 }
