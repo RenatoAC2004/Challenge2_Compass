@@ -3,13 +3,12 @@ module.exports = {
   content: ["./src/**/*.{html,js,jsx,ts,tsx}"],
   theme: {
     extend: {
-      fontFamily:{
+      fontFamily: {
         raleway: ["Raleway", 'sans-serif']
       },
-      colors:{
+      colors: {
         primaryLunarGreen: "#1A3306",
         primaryAvacado: "#8A9B6E",
-        
       }
     },
   },

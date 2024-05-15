@@ -16,6 +16,7 @@ export const MainRoutes = () => {
           <Route path="/product/:id" element={<Product />} />
           <Route path="/register" element={<Register />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/aboutus" element={<></>} />
           <Route path="*"/>
         </Route>
       </Routes>
