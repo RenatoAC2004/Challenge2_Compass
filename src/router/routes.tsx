@@ -2,9 +2,9 @@ import { Routes, Route } from "react-router-dom"
 import { Homepage } from "../pages/Homepage";
 import { Product } from "../pages/Product";
 import { Register } from "../pages/Register";
-import { Contact } from "../pages/Contact";
 import { Auth } from "../pages/Auth";
 import { ProtectRoute } from "./ProtectRoute";
+import AboutUs from "../pages/AboutUs";
 
 export const MainRoutes = () => {
   
@@ -15,8 +15,7 @@ export const MainRoutes = () => {
           <Route path="/" element={<Homepage />} />
           <Route path="/product/:id" element={<Product />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/aboutus" element={<></>} />
+          <Route path="/aboutus" element={<AboutUs />} />
           <Route path="*"/>
         </Route>
       </Routes>
