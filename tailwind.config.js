@@ -4,6 +4,13 @@ module.exports = {
   theme: {
     extend: {
       fontFamily:{
+        inter:["Inter",'sans-serif'],
+        garamond:["EB Garamond", 'sans-serif'],
+      },
+      colors:{
+        BackgroundAboutUs: '#F0F1EE',
+        moss: "#354733",
+      },
         raleway: ["Raleway", 'sans-serif']
       },
       colors:{
