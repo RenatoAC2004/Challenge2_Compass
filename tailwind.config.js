@@ -11,6 +11,13 @@ module.exports = {
         BackgroundAboutUs: '#F0F1EE',
         moss: "#354733",
       },
+        raleway: ["Raleway", 'sans-serif']
+      },
+      colors:{
+        primaryLunarGreen: "#1A3306",
+        primaryAvacado: "#8A9B6E",
+        
+      }
     },
   },
   plugins: [],

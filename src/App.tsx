@@ -1,16 +1,11 @@
-import {Routes, Route} from "react-router-dom"
-import AboutUs from "./pages/AboutUs";
+import Navbar from "./components/Navbar";
+import { MainRoutes } from "./router/routes";
 
-function App() {
+export const App = () => {
   return (
     <>
-    <div>
-      <Routes>
-        <Route path="/aboutus" element={<AboutUs />}></Route>
-      </Routes>
-    </div>
+    <Navbar />
+    <MainRoutes />
     </>
   );
 }
-
-export default App;
