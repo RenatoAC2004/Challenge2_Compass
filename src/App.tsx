@@ -5,6 +5,7 @@ export const App = () => {
   return (
     <>
     <Navbar />
+
     <MainRoutes />
     </>
   );
