@@ -1,3 +1,4 @@
+import { Footer } from "./components/Footer";
 import Navbar from "./components/Navbar";
 import { MainRoutes } from "./router/routes";
 
@@ -7,6 +8,7 @@ export const App = () => {
     <Navbar />
 
     <MainRoutes />
+    <Footer />
     </>
   );
 }

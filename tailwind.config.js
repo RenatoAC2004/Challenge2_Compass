@@ -12,7 +12,13 @@ module.exports = {
         BackgroundAboutUs: "#F0F1EE",
         moss: "#354733",
         primaryLunarGreen: "#1A3306",
-        primaryAvacado: "#8A9B6E"
+        primaryAvacado: "#8A9B6E",
+        customColor: '#354733',
+      borderColor: '#DDDEA0'
+      },
+      backgroundImage: {
+        'footer-texture': "url('./img/imgFundo.png')",
+    
       }
     }
   },
