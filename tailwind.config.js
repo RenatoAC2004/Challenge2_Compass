@@ -6,7 +6,8 @@ module.exports = {
       fontFamily: {
         inter: ["Inter", "sans-serif"],
         garamond: ["EB Garamond", "sans-serif"],
-        raleway: ["Raleway", "sans-serif"]
+        raleway: ["Raleway", "sans-serif"],
+        pacifico: ["Pacifico", "sans-serif"]
       },
       colors: {
         BackgroundAboutUs: "#F0F1EE",
@@ -14,11 +15,11 @@ module.exports = {
         primaryLunarGreen: "#1A3306",
         primaryAvacado: "#8A9B6E",
         customColor: '#354733',
-      borderColor: '#DDDEA0'
+        borderColor: '#DDDEA0',
+        textSecondary: "#808276"
       },
       backgroundImage: {
-        'footer-texture': "url('./img/imgFundo.png')",
-    
+        'footer-texture': "url('./img/imgFundo.png')"
       }
     }
   },

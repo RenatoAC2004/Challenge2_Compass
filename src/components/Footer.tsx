@@ -32,7 +32,7 @@ export const Footer = () => {
             </div>
         </div>
         <div className="h-28 w-full flex flex-row items-center justify-between ">
-           <Link to="/"><img src={logo} alt="logo" className="h-auto pl-20 md:pl-24" /></Link> 
+           <Link to="/"><img src={logo} alt="logo" className="h-auto pl-20 md:pl-24 " /></Link> 
             <p className="flex justify-end pr-24 md:pr-24 text-center">Compassinhos ®. All rights <br/>reserved.</p>
         </div>
     </footer>
