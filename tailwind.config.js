@@ -10,7 +10,6 @@ module.exports = {
         pacifico: ["Pacifico", "sans-serif"]
       },
       colors: {
-        BackgroundAboutUs: "#F0F1EE",
         moss: "#354733",
         primaryLunarGreen: "#1A3306",
         primaryAvacado: "#8A9B6E",

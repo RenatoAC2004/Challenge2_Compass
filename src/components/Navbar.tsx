@@ -22,16 +22,16 @@ const Navbar = () => {
       <header className="fixed w-full h-[5.5rem] px-6 py-4 flex justify-between sm:px-24 z-20">
         <img src="src\assets\Logo.svg" alt="Logo" />
         <div className="hidden p-4 font-raleway gap-x-4 md:flex">
-          <Link to="/" className="px-3 text-primaryAvacado">
+          <Link to="/" className="px-3 text-primaryAvacado hover:font-bold">
             Home
           </Link>
-          <Link to="/register" className="px-3">
+          <Link to="/register" className="px-3 hover:font-bold">
             Register
           </Link>
-          <Link to="/product" className="px-3">
+          <Link to="/product" className="px-3 hover:font-bold">
             Products
           </Link>
-          <Link to="/contact" className="px-3">
+          <Link to="/aboutus" className="px-3 hover:font-bold">
             About us
           </Link>
         </div>
