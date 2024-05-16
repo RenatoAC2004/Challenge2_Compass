@@ -13,7 +13,7 @@ export const MainRoutes = () => {
         <Route path="/auth" element={<Auth />}/>
         <Route element={<ProtectRoute />}>
           <Route path="/" element={<Homepage />} />
-          <Route path="/product/:id" element={<Product />} />
+          <Route path="/product/:productId" element={<Product />} />
           <Route path="/register" element={<Register />} />
           <Route path="/aboutus" element={<AboutUs />} />
           <Route path="*"/>

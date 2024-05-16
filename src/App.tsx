@@ -1,13 +1,12 @@
-import { Carousel } from "./components/Carousel";
-import Navbar from "./components/Navbar";
+import { QueryClient, QueryClientProvider } from "react-query";
 import { MainRoutes } from "./router/routes";
+
+const queryClient = new QueryClient()
 
 export const App = () => {
   return (
-    <>
-    <Navbar />
-    <Carousel />
-    <MainRoutes />
-    </>
+    <QueryClientProvider client={queryClient}>
+      <MainRoutes />
+    </QueryClientProvider>
   );
 }
