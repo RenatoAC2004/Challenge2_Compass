@@ -9,15 +9,32 @@ export const Product = () => {
 
   const { productId = '' } = useParams()
   const fetchProduct = () => getProduct(productId)
-  const { data, isLoading } = useQuery<ProductType>('product', fetchProduct)
-
+  const { data, isLoading } = useQuery<ProductType>(`product-${productId}`, fetchProduct)
+  
   if(isLoading) return <Loading size={20} />
     
   if(!data) return <div>errorpage</div>
 
-  return (
-    <div>
+  const {imgUrl, name, description, label, price, features, subtitle} = data
 
-    </div>
+  return (
+    <section>
+      <img src={imgUrl} alt={name} />
+      <div>
+        <h1>{name}</h1>
+        <h2>{subtitle}</h2>
+        {label.map(label => (
+          <div key={label}>
+
+          </div>
+        ))}
+        <span>${price}</span>
+        <button>Check out</button>
+        <h2>Features</h2>
+        <p>{features}</p>
+        <h2>Description</h2>
+        <p>{description}</p>
+      </div>
+    </section>
   )
 }

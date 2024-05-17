@@ -10,7 +10,7 @@ const AboutUs = () => {
           { name: 'Clara Ricioni', imgSrc: '../../img/clara.jpeg', github: 'https://github.com/clararicioni' },
           { name: 'Ana Beatriz Ramos', imgSrc: '../../img/anab.jpeg', github: 'https://github.com/AnaBeatriz-R' },
           { name: 'Renato Alexandre', imgSrc: '../../img/renato.jpeg', github: 'https://github.com/RenatoAC2004' },
-          { name: 'Frederick Santos', imgSrc: '../../img/renato.jpeg', github: 'https://github.com/rostfred' },
+          { name: 'Frederick Rost', imgSrc: '../../img/renato.jpeg', github: 'https://github.com/rostfred' },
         ].map((person, index) => (
           <div key={index} className="flex flex-col items-center">
             <img src={person.imgSrc} width="210" height="10" className="transition-transform hover:scale-125 rounded-lg shadow-xl mx-4 mb-3"/>

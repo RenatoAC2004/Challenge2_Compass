@@ -14,6 +14,80 @@
       "features": "Species: Echinocereus spp. Mature Size: Varies by species, typically ranging from 4 to 12 inches (10-30 cm) in height. Blooming Season: Typically spring or summer, with flowers lasting several days to weeks. Pot Size: Available in various pot sizes to suit your preference and needs. Shipping: Our Echinocereus Cacti are carefully packaged and shipped with the utmost care to ensure they arrive in excellent condition.",
       "description": "Ladyfinger cactus (Echinocereus pentalophus) is also known as Alice, Devil's Fingers, and Dog Tail. It needs bright sunlight, light fertilizer, and is prone to root rot. The root system is shallow and weak. Aphids and mealybugs are also a danger. Avoiding wet soil can help with success with a ladyfinger cactus.",
       "imgUrl": "../../src/assets/echinocereus-cactus.svg"
+    },
+    {
+      "id": "2",
+      "name": "Ball Cactus",
+      "subtitle": "A Majestic Addition to Your Plant Collection",
+      "label": [
+        "indoor",
+        "cactus"
+      ],
+      "price": 139.99,
+      "isInSale": true,
+      "discountPercentage": 20,
+      "features": "Species: Echinocereus spp. Mature Size: Varies by species, typically ranging from 4 to 12 inches (10-30 cm) in height. Blooming Season: Typically spring or summer, with flowers lasting several days to weeks. Pot Size: Available in various pot sizes to suit your preference and needs. Shipping: Our Echinocereus Cacti are carefully packaged and shipped with the utmost care to ensure they arrive in excellent condition.",
+      "description": "Ladyfinger cactus (Echinocereus pentalophus) is also known as Alice, Devil's Fingers, and Dog Tail. It needs bright sunlight, light fertilizer, and is prone to root rot. The root system is shallow and weak. Aphids and mealybugs are also a danger. Avoiding wet soil can help with success with a ladyfinger cactus.",
+      "imgUrl": "../../src/assets/ball-cactus.svg"
+    },
+    {
+      "id": "3",
+      "name": "Adam's Rib",
+      "subtitle": "A Majestic Addition to Your Plant Collection",
+      "label": [
+        "outdoor"
+      ],
+      "price": 139.99,
+      "isInSale": true,
+      "discountPercentage": 20,
+      "features": "Species: Echinocereus spp. Mature Size: Varies by species, typically ranging from 4 to 12 inches (10-30 cm) in height. Blooming Season: Typically spring or summer, with flowers lasting several days to weeks. Pot Size: Available in various pot sizes to suit your preference and needs. Shipping: Our Echinocereus Cacti are carefully packaged and shipped with the utmost care to ensure they arrive in excellent condition.",
+      "description": "Ladyfinger cactus (Echinocereus pentalophus) is also known as Alice, Devil's Fingers, and Dog Tail. It needs bright sunlight, light fertilizer, and is prone to root rot. The root system is shallow and weak. Aphids and mealybugs are also a danger. Avoiding wet soil can help with success with a ladyfinger cactus.",
+      "imgUrl": "../../src/assets/adams-rib.svg"
+    },
+    {
+      "id": "4",
+      "name": "Fortune Flower",
+      "subtitle": "A Majestic Addition to Your Plant Collection",
+      "label": [
+        "indoor",
+        "cactus"
+      ],
+      "price": 139.99,
+      "isInSale": true,
+      "discountPercentage": 20,
+      "features": "Species: Echinocereus spp. Mature Size: Varies by species, typically ranging from 4 to 12 inches (10-30 cm) in height. Blooming Season: Typically spring or summer, with flowers lasting several days to weeks. Pot Size: Available in various pot sizes to suit your preference and needs. Shipping: Our Echinocereus Cacti are carefully packaged and shipped with the utmost care to ensure they arrive in excellent condition.",
+      "description": "Ladyfinger cactus (Echinocereus pentalophus) is also known as Alice, Devil's Fingers, and Dog Tail. It needs bright sunlight, light fertilizer, and is prone to root rot. The root system is shallow and weak. Aphids and mealybugs are also a danger. Avoiding wet soil can help with success with a ladyfinger cactus.",
+      "imgUrl": "../../src/assets/fortune-flower.svg"
+    },
+    {
+      "id": "5",
+      "name": "Fortune Flower",
+      "subtitle": "A Majestic Addition to Your Plant Collection",
+      "label": [
+        "indoor",
+        "cactus"
+      ],
+      "price": 139.99,
+      "isInSale": true,
+      "discountPercentage": 20,
+      "features": "Species: Echinocereus spp. Mature Size: Varies by species, typically ranging from 4 to 12 inches (10-30 cm) in height. Blooming Season: Typically spring or summer, with flowers lasting several days to weeks. Pot Size: Available in various pot sizes to suit your preference and needs. Shipping: Our Echinocereus Cacti are carefully packaged and shipped with the utmost care to ensure they arrive in excellent condition.",
+      "description": "Ladyfinger cactus (Echinocereus pentalophus) is also known as Alice, Devil's Fingers, and Dog Tail. It needs bright sunlight, light fertilizer, and is prone to root rot. The root system is shallow and weak. Aphids and mealybugs are also a danger. Avoiding wet soil can help with success with a ladyfinger cactus.",
+      "imgUrl": "../../src/assets/fortune-flower.svg"
+    },
+    {
+      "id": "6",
+      "name": "Fortune Flower",
+      "subtitle": "A Majestic Addition to Your Plant Collection",
+      "label": [
+        "indoor",
+        "cactus"
+      ],
+      "price": 139.99,
+      "isInSale": true,
+      "discountPercentage": 20,
+      "features": "Species: Echinocereus spp. Mature Size: Varies by species, typically ranging from 4 to 12 inches (10-30 cm) in height. Blooming Season: Typically spring or summer, with flowers lasting several days to weeks. Pot Size: Available in various pot sizes to suit your preference and needs. Shipping: Our Echinocereus Cacti are carefully packaged and shipped with the utmost care to ensure they arrive in excellent condition.",
+      "description": "Ladyfinger cactus (Echinocereus pentalophus) is also known as Alice, Devil's Fingers, and Dog Tail. It needs bright sunlight, light fertilizer, and is prone to root rot. The root system is shallow and weak. Aphids and mealybugs are also a danger. Avoiding wet soil can help with success with a ladyfinger cactus.",
+      "imgUrl": "../../src/assets/fortune-flower.svg"
     }
   ]
 }
