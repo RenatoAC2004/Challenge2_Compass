@@ -15,7 +15,9 @@ module.exports = {
         primaryAvacado: "#8A9B6E",
         customColor: '#354733',
         borderColor: '#DDDEA0',
-        textSecondary: "#808276"
+        textSecondary: "#808276",
+        inputBorders: "#AFB2AA",
+        mainBackground: "#F0F1EE"
       },
       backgroundImage: {
         'footer-texture': "url('./img/imgFundo.png')"
