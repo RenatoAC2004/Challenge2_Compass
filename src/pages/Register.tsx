@@ -7,13 +7,13 @@ export const Register = () => {
     setSelectedRadio(event.target.value)
   }
   return (
-    <section className="h-screen bg-BackgroundAboutUs pt-[5.5rem]">
-      <div className="">
-        <form action="" className="flex flex-col p-6 font-inter">
-          <p className="font-inter font-semibold text-2xl border-b border-inputBorders pb-4">
+    <section className="h-full bg-BackgroundAboutUs pt-[5.5rem]">
+      <div>
+        <form action="" className="flex flex-col p-6 font-inter lg:w-1/2">
+          <p className="font-inter font-semibold text-2xl border-b border-inputBorders pb-4 mb-9">
             Plant registration
           </p>
-          <label htmlFor="plantName" className="font-medium text-lg">
+          <label htmlFor="plantName" className="font-medium text-lg pb-4">
             Plant name
           </label>
           <input
@@ -21,10 +21,10 @@ export const Register = () => {
             name="plantName"
             id="plantName"
             placeholder="Echinocereus Cactus"
-            className="py-3 px-4 rounded-md border-[1.5px] border-inputBorders"
+            className="py-3 px-4 rounded border-[1.5px] border-inputBorders mb-6"
           />
 
-          <label htmlFor="plantSubtitle" className="font-medium text-lg">
+          <label htmlFor="plantSubtitle" className="font-medium text-lg pb-4">
             Plant subtitle
           </label>
           <input
@@ -32,10 +32,10 @@ export const Register = () => {
             name="plantSubtitle"
             id="plantSubtitle"
             placeholder="A majestic addition to your plant collection"
-            className="py-3 px-4 rounded-md border-[1.5px] border-inputBorders overflow-ellipsis"
+            className="py-3 px-4 rounded border-[1.5px] border-inputBorders overflow-ellipsis mb-9"
           />
 
-          <label htmlFor="plantType" className="font-medium text-lg">
+          <label htmlFor="plantType" className="font-medium text-lg pb-4">
             Plant type
           </label>
           <input
@@ -43,11 +43,11 @@ export const Register = () => {
             name="plantType"
             id="plantType"
             placeholder="Cactus"
-            className="py-3 px-4 rounded-md border-[1.5px] border-inputBorders overflow-ellipsis"
+            className="py-3 px-4 rounded border-[1.5px] border-inputBorders overflow-ellipsis mb-9"
           />
-          <div className="flex gap-x-3">
+          <div className="flex gap-x-3 mb-9">
             <div className="flex flex-col w-1/2">
-              <label htmlFor="price" className="font-medium text-lg">
+              <label htmlFor="price" className="font-medium text-lg pb-4">
                 Price
               </label>
               <input
@@ -55,14 +55,14 @@ export const Register = () => {
                 name="price"
                 id="price"
                 placeholder="$139.99"
-                className="py-3 px-4 rounded-md border-[1.5px] border-inputBorders overflow-ellipsis"
+                className="py-3 px-4 rounded border-[1.5px] border-inputBorders overflow-ellipsis"
               />
             </div>
 
             <div className="flex flex-col w-1/2">
               <label
                 htmlFor="discountPercentage"
-                className="whitespace-nowrap font-medium text-lg "
+                className="whitespace-nowrap font-medium text-lg pb-4"
               >
                 Discount percentage
               </label>
@@ -71,13 +71,13 @@ export const Register = () => {
                 name="discountPercentage"
                 id="discountPercentage"
                 placeholder="20%"
-                className="py-3 px-4 rounded-md border-[1.5px] border-inputBorders overflow-ellipsis"
+                className="py-3 px-4 rounded border-[1.5px] border-inputBorders overflow-ellipsis"
               />
             </div>
           </div>
-          <div className="flex flex-col mt-4">
-            <p className="font-semibold text-lg">Label:</p>
-            <div className="flex gap-x-5 mt-2">
+          <div className="flex flex-col mb-9">
+            <p className="font-semibold text-lg pb-4">Label:</p>
+            <div className="flex gap-x-5">
               <div className="flex items-center">
                 <label htmlFor="radioLabels1" className="flex items-center">
                   <input
@@ -89,7 +89,7 @@ export const Register = () => {
                     onChange={handleRadioChange}
                     className="hidden peer"
                   />
-                  <div className="w-4 h-4 rounded-full border-2 border-inputBorders peer-checked:border-moss flex items-center justify-center">
+                  <div className="w-4 h-4 rounded-full border-2 border-inputBorders transition-all peer-checked:border-moss flex items-center justify-center">
                     {selectedRadio === "Indoor" && (
                       <div className="w-2 h-2 rounded-full bg-moss"></div>
                     )}
@@ -114,7 +114,7 @@ export const Register = () => {
                     onChange={handleRadioChange}
                     className="hidden peer"
                   />
-                  <div className="w-4 h-4 rounded-full border-2 border-inputBorders peer-checked:border-moss flex items-center justify-center">
+                  <div className="w-4 h-4 rounded-full border-2 border-inputBorders transition-all peer-checked:border-moss flex items-center justify-center">
                     {selectedRadio === "Outdoor" && (
                       <div className="w-2 h-2 rounded-full bg-moss"></div>
                     )}
@@ -130,6 +130,28 @@ export const Register = () => {
               </div>
             </div>
           </div>
+
+          <label htmlFor="features" className="font-medium text-lg pb-4">
+            Features
+          </label>
+          <textarea
+            name="features"
+            id="features"
+            placeholder="Species: Echinocereus..."
+            className="py-3 px-4 h-32 rounded border-[1.5px] border-inputBorders overflow-ellipsis resize-none mb-4"
+          ></textarea>
+
+          <label htmlFor="description" className="font-medium text-lg pb-4">
+            Description
+          </label>
+          <textarea
+            name="description"
+            id="description"
+            placeholder="Ladyfinger cactus..."
+            className="py-3 px-4 h-32 rounded border-[1.5px] border-inputBorders overflow-ellipsis resize-none mb-16"
+          ></textarea>
+
+          <button type="submit" className="w-full py-3.5 bg-moss rounded text-white font-bold">Register</button>
         </form>
       </div>
     </section>
