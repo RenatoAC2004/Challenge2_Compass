@@ -7,10 +7,18 @@
 <section>🪴 Form for registering and displaying plants, simulating a commercial exhibition.</section>
 
 ## ⚙️ How to run
-<section></section>
+<section>👉 Make sure you have the <a href="https://nodejs.org/en">Node.js</a> software to execute the commands;</section>
+<section>👉 Download this repository <b>on your local machine</b>;</section>
+<section>👉 Open your terminal and run the command "npm run dev";</section>
+  
+    npm run dev 
+<section>👉 Click on the link that appears after the command.</section>
+
+    VITE v5.2.11  ready in 959 ms
+    ➜  Local:   http://localhost:5173/
 
 ## 🛠️ Technologies
-<img src="https://skillicons.dev/icons?i=html,ts,react,tailwindcss,git,figma" />
+<img src="https://skillicons.dev/icons?i=html,ts,react,tailwindcss,git,figma,nodejs" />
 
 ## 🖼️ Images
 
