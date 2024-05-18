@@ -17,7 +17,8 @@ module.exports = {
         borderColor: '#DDDEA0',
         textSecondary: "#808276",
         inputBorders: "#AFB2AA",
-        mainBackground: "#F0F1EE"
+        mainBackground: "#F0F1EE",
+        titulo:"#1E1E24"
       },
       backgroundImage: {
         'footer-texture': "url('./img/imgFundo.png')"
