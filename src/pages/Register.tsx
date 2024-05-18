@@ -1,4 +1,6 @@
 import { ChangeEvent, useState } from "react"
+import Navbar from "../components/Navbar"
+import { Footer } from "../components/Footer"
 
 export const Register = () => {
   const [selectedRadio, setSelectedRadio] = useState("Indoor")
@@ -7,6 +9,8 @@ export const Register = () => {
     setSelectedRadio(event.target.value)
   }
   return (
+    <>
+    <Navbar />
     <section className="h-full bg-mainBackground pt-[5.5rem] overflow-hidden">
       <div className="lg:flex lg:pl-12">
         <form action="" className="flex flex-col p-6 font-inter lg:pr-0 lg:p-12 lg:w-1/2">
@@ -166,5 +170,7 @@ export const Register = () => {
         />
       </div>
     </section>
+    <Footer />
+    </>
   )
 }

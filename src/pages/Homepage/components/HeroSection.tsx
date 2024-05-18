@@ -4,7 +4,7 @@ import MainButton from "../../../components/MainButton"
 export const HeroSection = () => {
   return (
     <section
-        className="flex flex-col justify-center h-screen bg-BackgroundAboutUs px-4 relative
+        className="flex flex-col justify-center h-screen bg-mainBackground px-4 relative
         lg:px-0 lg:flex-row lg:justify-normal lg:items-center overflow-hidden"
       >
         <div
