@@ -7,9 +7,10 @@ import { ClerkProvider } from '@clerk/clerk-react'
 const keyClerkAPI = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-    <ClerkProvider publishableKey={keyClerkAPI}>
-      <BrowserRouter>
+    // <ClerkProvider publishableKey={keyClerkAPI}>
+    //   <BrowserRouter>
         <App />
-      </BrowserRouter>
-    </ClerkProvider>
+    //   </BrowserRouter>
+    // </ClerkProvider>
+    
 )
