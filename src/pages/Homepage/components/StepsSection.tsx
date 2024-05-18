@@ -1,5 +1,5 @@
 
-export const SectionSteps = () => {
+export const StepsSection = () => {
   return (
     <div className="flex flex-wrap ">
       <div className="flex flex-auto flex-col items-center justify-center h-[156px] w-[1532px] font-garamond m-4">

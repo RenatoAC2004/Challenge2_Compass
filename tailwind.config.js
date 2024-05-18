@@ -22,7 +22,10 @@ module.exports = {
       },
       backgroundImage: {
         'footer-texture': "url('./img/imgFundo.png')"
-      }
+      },
+      boxShadow: {
+        'card': '0 7px 6px 0px rgba(41, 41, 41, 0.08)',
+      },
     }
   },
   plugins: []

@@ -1,23 +1,12 @@
-import { Footer } from "./components/Footer";
-import Navbar from "./components/Navbar";
-import {SectionSteps }from "./components/SectionSteps"
-
+import { QueryClient, QueryClientProvider } from "react-query";
 import { MainRoutes } from "./router/routes";
+
+const queryClient = new QueryClient()
 
 export const App = () => {
   return (
-    
-    
-    
-    <>
-    
-
-    <SectionSteps/>
-
-
-    
-
-    
-    </>
+    <QueryClientProvider client={queryClient}>
+      <MainRoutes />
+    </QueryClientProvider>
   );
 }

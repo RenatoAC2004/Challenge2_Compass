@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom"
-import { Homepage } from "../pages/Homepage";
+import { Homepage } from "../pages/Homepage/Homepage";
 import { Product } from "../pages/Product";
 import { Register } from "../pages/Register";
 import { Auth } from "../pages/Auth";
@@ -13,7 +13,7 @@ export const MainRoutes = () => {
         <Route path="/auth" element={<Auth />}/>
         <Route element={<ProtectRoute />}>
           <Route path="/" element={<Homepage />} />
-          <Route path="/product/:id" element={<Product />} />
+          <Route path="/product/:productId" element={<Product />} />
           <Route path="/register" element={<Register />} />
           <Route path="/aboutus" element={<AboutUs />} />
           <Route path="*"/>
