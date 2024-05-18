@@ -1,44 +1,45 @@
+
 export const SectionSteps = () => {
   return (
-    <div className="flex-wrap">
-      <div className="flex-col py-16 h-[75px] ">
-        <h1 className="text-3xl text-center text-green-800 font-bold mb-4">
-          Steps To Take Care Of Your{" "}
-          <span className="text-green-600">Plants</span>
-        </h1>
-        <p className="text-lg text-center leading-loose  py-1">
-          By following these three steps - proper watering, appropriate
-          sunlight, and providing essential nutrients - you'll be well on your
-          way to {" "}
-        </p>
-        <p className="text-center text-lg ">maintaining healthy and thriving</p>
-      </div>
+    <div className="flex flex-wrap ">
+      <div className="flex flex-auto flex-col items-center justify-center h-[156px] w-[1532px] font-garamond m-4">
+  <h1 className="text-[64px] leading-[auto] text-center text-moss font-bold">
+    Steps To Take Care Of Your <span className="text-primaryAvacado">Plants</span>
+  </h1>
+  <div>
+    <p className="text-borderColor text-center">
+    By following these three steps - proper watering, appropriate sunlight, and providing essential nutrients - you'll be well on your way to maintaining healthy and thriving plants.
+    </p>
+  </div>
+  <p className="text-center text-borderColor">maintaining healthy and thriving</p>
+</div>
 
-      <div className="flex justify-center">
-        <div className="content-center text-center px-8">
+
+      <div className="flex justify-center h-[342px] w-[1532px] ">
+        <div className="content-center text-center ">
           <div className="flex justify-center">
             <img src="/src/img/image01.png" alt="Watering" />
           </div>
-          <h2 className="py-5 font-bold">Watering</h2>
-          <p className="px-8">
+          <h2 className="font-bold text-titulo ">Watering</h2>
+          <p className="">
             Water your plants when the top inch of soil feels dry to the touch.
             Avoid overwatering, as it can lead to root rot.
           </p>
         </div>
-        <div className="content-center text-center px-8">
+        <div className="content-center text-center">
           <div className="flex justify-center">
             <img src="/src/img/image02.png" alt="Watering" />
           </div>
-          <h2 className="py-5 font-bold">Sunlight</h2>
+          <h2 className=" font-bold">Sunlight</h2>
           <p>
           Most plants need adequate sunlight to thrive. Place your plants in areas that receive the appropriate amount of light for their specific needs
           </p>
         </div>
-        <div className="content-center text-center px-8">
+        <div className="content-center text-center">
           <div className="flex justify-center">
             <img src="/src/img/image03.png" alt="Watering" />
           </div>
-          <h2 className="py-5 font-bold">Nutrients and Fertilizing</h2>
+          <h2 className=" font-bold">Nutrients and Fertilizing</h2>
           <p>
           Choose a suitable fertilizer based on the specific needs of your plants, whether it's a balanced or specialized formula.
           </p>
@@ -46,7 +47,7 @@ export const SectionSteps = () => {
       </div>
 
       {/* Separate section 2 Part 3 images :D */}
-      <div className="flex  flex-col md:flex-col lg:space-x-20 lg:flex-row justify-center mx-4">
+      <div className="flex  flex-wrap flex-col w-[1532px] h-[857px] md:flex-col lg:space-x-20 lg:flex-row justify-center mx-4 ">
         <div className="lg:w-1/2 h-auto"><img src="/src/img/Rectangle 32.png" alt="Image01"  /></div>
         <div className="mt-4 lg:w-1/2"><img src="/src/img/Rectangle 33.png" alt="Image01"  /></div>
         <div className="mt-4 flex flex-col justify-center items-center">

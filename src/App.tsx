@@ -1,3 +1,4 @@
+import { Footer } from "./components/Footer";
 import Navbar from "./components/Navbar";
 import {SectionSteps }from "./components/SectionSteps"
 
@@ -9,14 +10,14 @@ export const App = () => {
     
     
     <>
-    <Navbar />
+    
 
     <SectionSteps/>
 
 
     
 
-    <MainRoutes />
+    
     </>
   );
 }
