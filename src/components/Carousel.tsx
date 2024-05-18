@@ -1,18 +1,22 @@
 import { ProductCard } from "./ProductCard";
 import { useQuery } from "react-query";
-import { getAllProducts } from "../services/getAllProducts";
 import { Loading } from "./Loading";
 import { ProductType } from "../services/saveProduct";
 import { Swiper, SwiperSlide } from 'swiper/react'
+import { getAllProductsWithSale } from "../services/getAllProductsWithSale";
+import { getAllProductsWithoutSale } from "../services/getAllProductWithoutSale";
 import 'swiper/css'
 
-
-export const Carousel = () => {
+interface CarouselProps {
+  isInSale: boolean
+}
+export const Carousel = ({isInSale}:CarouselProps) => {
   
-  const { data, isLoading } = useQuery<ProductType[]>('products', getAllProducts)
- 
-  if(isLoading) return <Loading size={20} />
-  if(!data) return
+  const queryFn = isInSale ? getAllProductsWithSale : getAllProductsWithoutSale
+  
+  const { data, isLoading } = useQuery<ProductType[]>(['products', isInSale], queryFn)
+    if(isLoading) return <Loading size={20} />
+    if(!data) return
 
   return (
     <Swiper className="p-20 bg-black"
@@ -21,10 +25,10 @@ export const Carousel = () => {
     >
       {data.map((data) => (
         <SwiperSlide key={data.id}>
-            <ProductCard
-              data={data}
-            />
-      </SwiperSlide>
+          <ProductCard
+            data={data}
+          />
+        </SwiperSlide>
       ))}
     </Swiper>
   )
