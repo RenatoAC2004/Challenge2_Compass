@@ -1,25 +1,41 @@
-import {
-  SignedIn,
-  SignedOut,
-  SignInButton,
-  UserButton,
-} from "@clerk/clerk-react"
-import { useState } from "react"
-import { IoIosClose, IoIosMenu } from "react-icons/io"
-import { Link } from "react-router-dom"
+import { useState, useEffect } from "react";
+import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/clerk-react";
+import { IoIosClose, IoIosMenu } from "react-icons/io";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
-  const [menuOpen, setMenuOpen] = useState(false)
-  const [menuIcon, setMenuIcon] = useState(<IoIosMenu size={40} />)
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [menuIcon, setMenuIcon] = useState(<IoIosMenu size={40} />);
+  const [scrolled, setScrolled] = useState(false);
 
   const toggleMenu = () => {
-    setMenuOpen(!menuOpen)
-    setMenuIcon(menuOpen ? <IoIosMenu size={40} /> : <IoIosClose size={50} />)
-  }
+    setMenuOpen(!menuOpen);
+    setMenuIcon(menuOpen ? <IoIosMenu size={40} /> : <IoIosClose size={50} />);
+  };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 0) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
     <>
-      <header className="fixed w-full h-[5.5rem] px-6 py-4 flex justify-between sm:px-24 z-20">
+      <header
+        className={`fixed w-full h-[5.5rem] px-6 py-4 flex justify-between transition-all sm:px-24 z-20 ${
+          scrolled ? "bg-white border-b-2 border-gray-200 shadow-lg" : ""
+        }`}
+      >
         <img src="src\assets\Logo.svg" alt="Logo" />
         <div className="hidden p-4 font-raleway gap-x-4 md:flex">
           <Link to="/" className="px-3 text-primaryAvacado hover:font-bold">
@@ -53,7 +69,7 @@ const Navbar = () => {
       </header>
 
       <div
-        className={`block absolute top-0 bg-primaryAvacado h-screen p-4 transition-all ease-in-out sm:w-1/2 w-3/4 md:hidden z-30 ${
+        className={`block fixed top-0 bg-primaryAvacado h-screen p-4 transition-all ease-in-out sm:w-1/2 w-3/4 md:hidden z-30 ${
           menuOpen ? "-left-0" : "-left-full"
         }`}
       >
@@ -103,7 +119,7 @@ const Navbar = () => {
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;
