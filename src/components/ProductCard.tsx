@@ -12,7 +12,7 @@ export const ProductCard = ( { data } : {data:ProductType}) => {
 
   return (
       <Link  to={`/product/${id}`}>
-          <div className="w-full h-fit flex flex-col bg-[#F0F1EE] shadow-card"> 
+          <div className="w-full h-fit flex flex-col bg-[#F0F1EE] shadow-card mb-[10px]"> 
             <img className="mt-0 mb-[1rem]" src={imgUrl} alt={name} />
             <div className="w-[20.25rem] h-[7.75rem] mx-[2.06rem] flex flex-col mb-[2rem]">
               <h1 className="font-lato text-xl font-bold text-primaryLunarGreen">{name}</h1>
@@ -20,8 +20,8 @@ export const ProductCard = ( { data } : {data:ProductType}) => {
                 <span className="font-raleway text-base font-normal text-primaryLunarGreen mt-[7px]">${price}</span>
               :
                 <div>
-                  <span className="font-raleway text-base font-normal text-primaryLunarGreen mt-[7px] line-through">${price}</span>
                   <span className="font-raleway text-base font-normal text-primaryLunarGreen mt-[7px]">${discountCalculate(price, discountPercentage)}</span>
+                  <span className="font-raleway text-base font-normal text-inputBorders mt-[7px] line-through ml-[1rem]">${price}</span>
                 </div>
             }
               <div className="w-[24.3rem] h-[2.4rem] flex gap-[0.875rem] mt-[1.5rem]">
