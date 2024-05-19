@@ -21,7 +21,7 @@ module.exports = {
         titulo:"#1E1E24"
       },
       backgroundImage: {
-        'footer-texture': "url('./img/imgFundo.png')"
+        'footer-texture': "url('./assets/imgFundo.png')"
       },
       boxShadow: {
         'card': '0 7px 6px 0px rgba(41, 41, 41, 0.08)',
