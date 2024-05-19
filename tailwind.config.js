@@ -19,14 +19,12 @@ module.exports = {
         inputBorders: "#AFB2AA",
         mainBackground: "#F0F1EE",
         title: "#1E1E24",
+        cardBackground: "#F8F9FB",
         greenLime: "#83E281",
         greenCactus: "#158212"
       },
       backgroundImage: {
         'footer-texture': "url('./src/assets/imgFundo.png')"
-      },
-      boxShadow: {
-        'card': '0 7px 6px 0px rgba(41, 41, 41, 0.1)',
       },
     }
   },

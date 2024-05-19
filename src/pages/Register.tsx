@@ -83,7 +83,7 @@ export const Register = () => {
             <p className="font-semibold text-lg pb-4">Label:</p>
             <div className="flex gap-x-5">
               <div className="flex items-center">
-                <label htmlFor="radioLabels1" className="flex items-center">
+                <label htmlFor="radioLabels1" className="flex items-center cursor-pointer">
                   <input
                     type="radio"
                     name="radioLabels"
@@ -108,7 +108,7 @@ export const Register = () => {
                 </label>
               </div>
               <div className="flex items-center">
-                <label htmlFor="radioLabels2" className="flex items-center">
+                <label htmlFor="radioLabels2" className="flex items-center cursor-pointer">
                   <input
                     type="radio"
                     name="radioLabels"

@@ -34,9 +34,9 @@ export const Carousel = ({isInSale}:CarouselProps) => {
     if(!data) return
 
   return (
-    <Swiper className="w-full max-h-[35rem] justify-center"
+    <Swiper className="w-full h-fit justify-center overflow-visible"
       spaceBetween={48}
-      slidesPerView={window.innerWidth <= 600 ? 1 : window.innerWidth <= 850? 2 : window.innerWidth <= 1200 ? 3 : 4}
+      slidesPerView={window.innerWidth <= 600 ? 1.2 : window.innerWidth <= 870? 2 : window.innerWidth <= 1200 ? 3 : 3.6}
     >
       {data.map((data) => (
         <SwiperSlide key={data.id}>
