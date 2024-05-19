@@ -18,5 +18,3 @@ export const saveProduct = async (product: ProductType) => {
 
   return data
 }
-
-// const { mutate, isLoading } = useMutation(saveProduct)
