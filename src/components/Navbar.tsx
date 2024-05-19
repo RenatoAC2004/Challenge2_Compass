@@ -36,7 +36,7 @@ const Navbar = () => {
           scrolled ? "bg-white border-b-2 border-gray-200 shadow-lg" : ""
         }`}
       >
-        <img src="src\assets\Logo.svg" alt="Logo" />
+        <img src="../../src/assets/Logo.svg" alt="Logo" />
         <div className="hidden p-4 font-raleway gap-x-4 md:flex">
           <Link to="/" className="px-3 text-primaryAvacado hover:font-bold">
             Home
@@ -44,7 +44,7 @@ const Navbar = () => {
           <Link to="/register" className="px-3 hover:font-bold">
             Register
           </Link>
-          <Link to="/product" className="px-3 hover:font-bold">
+          <Link to="/products" className="px-3 hover:font-bold">
             Products
           </Link>
           <Link to="/aboutus" className="px-3 hover:font-bold">
