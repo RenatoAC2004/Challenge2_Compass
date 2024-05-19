@@ -6,11 +6,26 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import { getAllProductsWithSale } from "../services/getAllProductsWithSale";
 import { getAllProductsWithoutSale } from "../services/getAllProductWithoutSale";
 import 'swiper/css'
+import { useEffect, useState } from "react";
 
 interface CarouselProps {
   isInSale: boolean
 }
 export const Carousel = ({isInSale}:CarouselProps) => {
+
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
   
   const queryFn = isInSale ? getAllProductsWithSale : getAllProductsWithoutSale
   
@@ -19,9 +34,9 @@ export const Carousel = ({isInSale}:CarouselProps) => {
     if(!data) return
 
   return (
-    <Swiper className="p-20 bg-black"
+    <Swiper className="w-full max-h-[35rem] justify-center"
       spaceBetween={48}
-      slidesPerView={4}
+      slidesPerView={window.innerWidth <= 600 ? 1 : window.innerWidth <= 850? 2 : window.innerWidth <= 1200 ? 3 : 4}
     >
       {data.map((data) => (
         <SwiperSlide key={data.id}>

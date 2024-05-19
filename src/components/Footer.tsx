@@ -3,11 +3,11 @@ import logo from "../assets/Logo.svg"
 
 export const Footer = () => {
   return (
-    <footer className="flex flex-col text-white bg-moss bottom-0 md:h-[35.75rem] w-full items-center bg-footer-texture py-5
-    md:pb-14 md:pt-36 md:px-24">
+    <footer className="flex flex-col text-white bg-moss bottom-0 w-full items-center bg-footer-texture py-5 bg-blend-multiply
+    md:pb-14 md:pt-36 md:px-24 md:h-[35.75rem]">
       <div
-        className="flex flex-col h-full justify-between border-b border-borderColor w-full 
-      md:flex-row mb-7"
+        className="flex flex-col h-full justify-between border-b border-borderColor w-full mb-7
+      md:flex-row"
       >
         <div
           className="w-full flex flex-col mb-8 items-center 

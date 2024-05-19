@@ -18,13 +18,13 @@ module.exports = {
         textSecondary: "#808276",
         inputBorders: "#AFB2AA",
         mainBackground: "#F0F1EE",
-        titulo:"#1E1E24"
+        title: "#1E1E24"
       },
       backgroundImage: {
-        'footer-texture': "url('./assets/imgFundo.png')"
+        'footer-texture': "url('./src/assets/imgFundo.png')"
       },
       boxShadow: {
-        'card': '0 7px 6px 0px rgba(41, 41, 41, 0.08)',
+        'card': '0 7px 6px 0px rgba(41, 41, 41, 0.1)',
       },
     }
   },
