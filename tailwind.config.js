@@ -19,7 +19,9 @@ module.exports = {
         inputBorders: "#AFB2AA",
         mainBackground: "#F0F1EE",
         title: "#1E1E24",
-        cardBackground: "#F8F9FB"
+        cardBackground: "#F8F9FB",
+        greenLime: "#83E281",
+        greenCactus: "#158212"
       },
       backgroundImage: {
         'footer-texture': "url('./src/assets/imgFundo.png')"
