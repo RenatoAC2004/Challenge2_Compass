@@ -11,7 +11,7 @@ export const ProductCard = ( { data } : {data:ProductType}) => {
   }
 
   return (
-      <Link  to={`/product/${id}`}>
+      <Link className="hover:opacity-80" to={`/product/${id}`}>
           <div className="w-full h-fit flex flex-col bg-[#F0F1EE] shadow-card mb-[10px]"> 
             <img className="mt-0 mb-[1rem]" src={imgUrl} alt={name} />
             <div className="w-[20.25rem] h-[7.75rem] mx-[2.06rem] flex flex-col mb-[2rem]">

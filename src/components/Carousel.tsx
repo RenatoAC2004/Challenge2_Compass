@@ -30,7 +30,7 @@ export const Carousel = ({isInSale}:CarouselProps) => {
   const queryFn = isInSale ? getAllProductsWithSale : getAllProductsWithoutSale
   
   const { data, isLoading } = useQuery<ProductType[]>(['products', isInSale], queryFn)
-    if(isLoading) return <Loading size={20} />
+    if(isLoading) return <div className="w-full max-h-[35rem] flex justify-center items-center py-[20rem]"> <Loading size={20} /> </div> 
     if(!data) return
 
   return (

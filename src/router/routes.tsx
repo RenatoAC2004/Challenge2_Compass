@@ -5,6 +5,7 @@ import { Register } from "../pages/Register";
 import { Auth } from "../pages/Auth";
 import { ProtectRoute } from "./ProtectRoute";
 import AboutUs from "../pages/AboutUs";
+import { AllProducts } from "../pages/AllProducts";
 
 export const MainRoutes = () => {
   
@@ -16,6 +17,7 @@ export const MainRoutes = () => {
           <Route path="/product/:productId" element={<Product />} />
           <Route path="/register" element={<Register />} />
           <Route path="/aboutus" element={<AboutUs />} />
+          <Route path="/products" element={<AllProducts />} />
           <Route path="*"/>
         </Route>
       </Routes>
