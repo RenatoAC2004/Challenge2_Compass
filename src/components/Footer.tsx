@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import logo from "../assets/Logo.svg"
+import logo from "../assets/LogoWhite.svg"
 
 export const Footer = () => {
   return (
@@ -22,17 +22,17 @@ export const Footer = () => {
             <ul>
               <li className="font-bold mb-8 text-2xl font-lato">Links</li>
               <li className="mb-4">
-                <Link to="/aboutus" className=" hover:text-primaryLunarGreen">
+                <Link to="/aboutus" className="transition-all hover:underline hover:text-primaryAvacado">
                   About us
                 </Link>
               </li>
               <li className="mb-4">
-                <Link to="/product" className=" hover:text-primaryLunarGreen">
+                <Link to="/product" className="transition-all hover:underline hover:text-primaryAvacado">
                   Products
                 </Link>
               </li>
               <li>
-                <Link to="/blogs" className=" hover:text-primaryLunarGreen">
+                <Link to="/blogs" className="transition-all hover:underline hover:text-primaryAvacado">
                   Blogs
                 </Link>
               </li>
@@ -42,17 +42,17 @@ export const Footer = () => {
             <ul>
               <li className="font-bold mb-8 text-2xl font-lato">Community</li>
               <li className="mb-4">
-                <Link to="/aboutus" className=" hover:text-primaryLunarGreen">
+                <Link to="/aboutus" className="transition-all hover:underline hover:text-primaryAvacado">
                   About us
                 </Link>
               </li>
               <li className="mb-4">
-                <Link to="/product" className=" hover:text-primaryLunarGreen">
+                <Link to="/product" className="transition-all hover:underline hover:text-primaryAvacado">
                   Products
                 </Link>
               </li>
               <li>
-                <Link to="/blogs" className=" hover:text-primaryLunarGreen">
+                <Link to="/blogs" className="transition-all hover:underline hover:text-primaryAvacado">
                   Blogs
                 </Link>
               </li>

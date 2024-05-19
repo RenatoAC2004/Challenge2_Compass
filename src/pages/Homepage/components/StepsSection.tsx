@@ -69,7 +69,7 @@ export const StepsSection = () => {
             src="src\assets\imgStepsSection3.png"
             alt="Image1 Steps Section"
           />
-          <p className="font-raleway my-8 text-textSecondary text-sm">
+          <p className="font-raleway my-8 text-textSecondary text-sm 2xl:text-base">
             Our website offers a wide array of stunning plants, ranging from
             vibrant flowers to lush indoor foliage, allowing you to create your
             very own green oasis. In addition to our extensive plant selection,

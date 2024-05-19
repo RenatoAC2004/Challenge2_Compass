@@ -11,11 +11,11 @@ export const ProductCard = ( { data } : {data:ProductType}) => {
   }
 
   return (
-      <Link  to={`/product/${id}`}>
-          <div className="w-full h-fit flex flex-col bg-[#F0F1EE] shadow-card mb-[10px]"> 
-            <img className="mt-0 mb-[1rem]" src={imgUrl} alt={name} />
-            <div className="w-[20.25rem] h-[7.75rem] mx-[2.06rem] flex flex-col mb-[2rem]">
-              <h1 className="font-lato text-xl font-bold text-primaryLunarGreen">{name}</h1>
+      <Link to={`/product/${id}`}>
+          <div className="w-full h-fit flex flex-col bg-cardBackground shadow-lg transition-all hover:scale-110 hover:shadow-lg hover:shadow-gray-500"> 
+            <img className="mb-4" src={imgUrl} alt={name} />
+            <div className="w-full h-full px-8 flex flex-col mb-8">
+              <h1 className="font-lato text-xl font-bold text-primaryLunarGreen whitespace-nowrap overflow-hidden text-ellipsis">{name}</h1>
               {!isInSale ? 
                 <span className="font-raleway text-base font-normal text-primaryLunarGreen mt-[7px]">${price}</span>
               :
@@ -24,10 +24,10 @@ export const ProductCard = ( { data } : {data:ProductType}) => {
                   <span className="font-raleway text-base font-normal text-inputBorders mt-[7px] line-through ml-[1rem]">${price}</span>
                 </div>
             }
-              <div className="w-[24.3rem] h-[2.4rem] flex gap-[0.875rem] mt-[1.5rem]">
+              <div className="h-fit flex flex-wrap gap-[0.875rem] mt-6">
                 {label && label.map((label) => (
-                  <div className="h-[2.4rem] flex justify-center items-center border-[0.125rem] border-primaryAvacado rounded-full" key={label}>
-                    <p className="font-raleway text-base font-normal text-primaryAvacado px-[0.813rem]">{label}</p>
+                  <div className="h-[2.4rem] flex justify-center items-center border-[0.125rem] bg-mainBackground border-primaryAvacado rounded-full overflow-hidden" key={label}>
+                    <p className="font-raleway text-base font-normal text-primaryAvacado px-[0.813rem] overflow-hidden text-ellipsis">{label}</p>
                   </div>
                 ))}
               </div>

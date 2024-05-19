@@ -99,7 +99,7 @@ const Navbar = () => {
             Products
           </Link>
           <Link
-            to="/contact"
+            to="/aboutus"
             className="px-2 py-3 bg-white rounded-lg shadow-md transition-all hover:bg-moss hover:text-white"
           >
             About us
