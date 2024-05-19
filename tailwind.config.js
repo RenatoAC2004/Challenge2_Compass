@@ -20,7 +20,8 @@ module.exports = {
         mainBackground: "#F0F1EE",
         title: "#1E1E24",
         greenLime: "#83E281",
-        greenCactus: "#158212"
+        greenCactus: "#158212",
+        errorBackground:"#E7E7E7"
       },
       backgroundImage: {
         'footer-texture': "url('./src/assets/imgFundo.png')"
