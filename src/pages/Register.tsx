@@ -147,9 +147,9 @@ export const Register = () => {
                 errors.name ? "border-red-500" : "border-inputBorders"
               } mb-1 bg-transparent`}
             />
-            {errors.name && <p className="text-red-500 mb-6">{errors.name}</p>}
+            {errors.name && <p className="text-red-500">{errors.name}</p>}
 
-            <label htmlFor="subtitle" className="font-medium text-lg pb-4">
+            <label htmlFor="subtitle" className="font-medium text-lg pb-4 mt-6">
               Plant subtitle
             </label>
             <input
@@ -164,10 +164,10 @@ export const Register = () => {
               } mb-1 bg-transparent`}
             />
             {errors.subtitle && (
-              <p className="text-red-500 mb-6">{errors.subtitle}</p>
+              <p className="text-red-500">{errors.subtitle}</p>
             )}
 
-            <label htmlFor="type" className="font-medium text-lg pb-4">
+            <label htmlFor="type" className="font-medium text-lg pb-4 mt-6">
               Plant type
             </label>
             <input
@@ -181,9 +181,9 @@ export const Register = () => {
                 errors.type ? "border-red-500" : "border-inputBorders"
               } mb-1 bg-transparent`}
             />
-            {errors.type && <p className="text-red-500 mb-6">{errors.type}</p>}
+            {errors.type && <p className="text-red-500">{errors.type}</p>}
 
-            <div className="flex justify-center items-start gap-x-3 mb-9">
+            <div className="flex justify-center items-start gap-x-3 mt-6">
               <div className="flex flex-col w-1/2">
                 <label htmlFor="price" className="font-medium text-lg pb-4 min-h-[4.5rem] sm:min-h-0">
                   Price
@@ -200,9 +200,6 @@ export const Register = () => {
                   } bg-transparent`}
                 />
                 {errors.price && <p className="text-red-500">{errors.price}</p>}
-                {errors.discountPercentage && (
-                  <p className="invisible">Discount is required</p>
-                )}
               </div>
 
               <div className="flex flex-col w-1/2 overflow-auto">
@@ -228,11 +225,10 @@ export const Register = () => {
                 {errors.discountPercentage && (
                   <p className="text-red-500">{errors.discountPercentage}</p>
                 )}
-                {errors.price && <p className="invisible">Price is required</p>}
               </div>
             </div>
 
-            <div className="flex flex-col mb-9">
+            <div className="flex flex-col my-9">
               <p className="font-semibold text-lg pb-4">Label:</p>
               <div className="flex gap-x-5">
                 <div className="flex items-center">
@@ -302,10 +298,10 @@ export const Register = () => {
               } resize-none mb-1 bg-transparent`}
             ></textarea>
             {errors.features && (
-              <p className="text-red-500 mb-4">{errors.features}</p>
+              <p className="text-red-500">{errors.features}</p>
             )}
 
-            <label htmlFor="description" className="font-medium text-lg pb-4">
+            <label htmlFor="description" className="font-medium text-lg pb-4 mt-4">
               Description
             </label>
             <textarea
@@ -324,7 +320,7 @@ export const Register = () => {
 
             <button
               type="submit"
-              className={`w-full py-3.5 bg-moss rounded text-white font-bold transition-all hover:opacity-75 flex items-center justify-center ${
+              className={`w-full py-3.5 bg-moss rounded text-white font-bold transition-all hover:opacity-75 flex items-center justify-center mt-16 ${
                 isLoading ? 'cursor-not-allowed' : ''
               }`}
             >
