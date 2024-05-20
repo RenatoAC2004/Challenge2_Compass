@@ -1,6 +1,6 @@
 import { useQuery } from "react-query"
 import { getProduct } from "../services/getProduct"
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import { Loading } from "../components/Loading"
 import { ProductType } from "../services/saveProduct"
 import { Footer } from "../components/Footer"
@@ -13,6 +13,8 @@ export const Product = () => {
   const { data, isLoading } = useQuery<ProductType>(`product-${productId}`, fetchProduct, {
     retry: false
   });
+
+  const navigate = useNavigate()
 
   if (isLoading) {
     return (
@@ -72,7 +74,7 @@ export const Product = () => {
             <p className="my-[1rem] font-lato font-bold text-2xl leading-[auto] text-black">
               ${price}
             </p>
-            <MainButton text={"Check out"} />
+            <MainButton text={"Check out"} onClick={() => navigate('/cart')} />
             <div className="hidden 2xl:block">
               <h2 className="my-[1rem] font-lato font-bold text-2xl leading-[auto] text-black">
                 Features

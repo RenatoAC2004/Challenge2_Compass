@@ -1,7 +1,10 @@
 import { BsArrowRight } from "react-icons/bs"
 import MainButton from "../../../components/MainButton"
+import { useNavigate } from "react-router-dom"
 
 export const HeroSection = () => {
+
+  const navigate = useNavigate()
   return (
     <section
       className="flex flex-col justify-center h-screen bg-mainBackground px-4 relative
@@ -31,7 +34,7 @@ export const HeroSection = () => {
             very own green oasis.
           </p>
           <div className="flex justify-center lg:justify-normal">
-            <MainButton text="Shop now" />
+            <MainButton text="Shop now" onClick={() => navigate('/shop-now') } />
           </div>
         </div>
         <img

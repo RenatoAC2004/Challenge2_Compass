@@ -6,10 +6,21 @@ import { useMutation, useQuery } from "react-query"
 import { ProductType, saveProduct } from "../services/saveProduct"
 import { getAllProducts } from "../services/getAllProducts"
 import { Loading } from "../components/Loading"
+import { ValidateForm } from "../utils/validateForm"
+
+interface Input {
+  name: string,
+  subtitle: string,
+  type: string,
+  price: string,
+  discountPercentage: string,
+  features: string,
+  description: string,
+}
 
 export const Register = () => {
   
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<Input>({
     name: "",
     subtitle: "",
     type: "",
@@ -18,7 +29,8 @@ export const Register = () => {
     features: "",
     description: "",
   })
-  const [errors, setErrors] = useState({
+
+  const [errors, setErrors] = useState<Input>({
     name: "",
     subtitle: "",
     type: "",
@@ -33,6 +45,15 @@ export const Register = () => {
   const { mutate, isLoading } = useMutation(saveProduct, {
     onSuccess: () => {
       setShowModal(true)
+      setFormData({
+        name: "",
+        subtitle: "",
+        type: "",
+        price: "",
+        discountPercentage: "",
+        features: "",
+        description: "",
+      })
     }
   })
   const { data } = useQuery<ProductType[]>(['register'], getAllProducts)
@@ -51,59 +72,31 @@ export const Register = () => {
     setSelectedRadio(event.target.value)
   }
 
+
+
   const validate = () => {
-    const newErrors: any = {}
-
-    const validateText = (name: string, value: string) => {
-      if (!value) return `${name} is required`
-      if (!/^[a-zA-Z\s]*$/.test(value))
-        return `${name} should contain only letters`
-      if (value.length < 3)
-        return `${name} should be at least 3 characters long`
-      return ""
+    const newErrors: Input = {
+      name: ValidateForm.validateText("Plant name", formData.name),
+      subtitle: ValidateForm.validateText("Plant subtitle", formData.subtitle),
+      type: ValidateForm.validateText("Plant type", formData.type),
+      price: ValidateForm.validatePrice(formData.price),
+      discountPercentage: ValidateForm.validateDiscount(formData.discountPercentage),
+      features: ValidateForm.validateFeatures(formData.features),
+      description: ValidateForm.validateDescription(formData.description)
     }
-
-    newErrors.name = validateText("Plant name", formData.name)
-    newErrors.subtitle = validateText("Plant subtitle", formData.subtitle)
-    newErrors.type = validateText("Plant type", formData.type)
-
-    if (!formData.price) newErrors.price = "Price is required"
-    if (!/^\d*\.?\d*$/.test(formData.price))
-      newErrors.price = "Price should contain only numbers"
-    if (parseFloat(formData.price) < 0)
-      newErrors.price = "Price cannot be negative"
-
-    if (!formData.discountPercentage)
-      newErrors.discountPercentage = "Discount is required"
-    if (!/^\d+$/.test(formData.discountPercentage))
-      newErrors.discountPercentage =
-        "Discount should contain only numbers"
-    if (parseFloat(formData.discountPercentage) < 0)
-      newErrors.discountPercentage = "Discount cannot be negative"
-
-    if (!formData.features) newErrors.features = "Features are required"
-    if (formData.features.length < 10)
-      newErrors.features = "Features should be at least 10 characters long."
-
-    if (!formData.description)
-      newErrors.description = "Description is required"
-    if (formData.description.length < 10)
-      newErrors.description = "Description should be at least 10 characters long."
-
     setErrors(newErrors)
-    return Object.keys(newErrors).every(key => !newErrors[key])
+    return Object.values(newErrors).every(value => !value.trim());
   }
 
   const handleSubmit = (event: FormEvent) => {
-    event.preventDefault();
+    event.preventDefault()
+
 
     if (!isLoading && validate()) {
       
       const { name, subtitle, label, type, price, discountPercentage, features, description } = ({ ...formData, label: selectedRadio });
-      const parsedPrice = parseFloat(price)
       const parsedDiscountPercentage = parseFloat(discountPercentage)
-      const isInSale = (parsedDiscountPercentage === 0 || Number.isNaN(parsedDiscountPercentage) ? false : true)
-      const imgUrl = "../../src/assets/adams-rib.svg"
+      const isInSale = !!parsedDiscountPercentage
       const id = dataLength.toString()
 
       mutate({ 
@@ -111,13 +104,14 @@ export const Register = () => {
         name, 
         subtitle, 
         label: [label, type],
-        price: parsedPrice, 
+        price: parseFloat(price), 
         isInSale,
         discountPercentage: parsedDiscountPercentage, 
         features, 
         description,
-        imgUrl
+        imgUrl: "../../src/assets/adams-rib.svg"
       })
+
     }
   }
 

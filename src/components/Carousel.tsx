@@ -34,7 +34,7 @@ export const Carousel = ({isInSale}:CarouselProps) => {
     if(!data) return
 
   return (
-    <Swiper className="w-full h-fit justify-center overflow-visible"
+    <Swiper className="w-full h-fit justify-center overflow-visible select-none"
       spaceBetween={48}
       slidesPerView={window.innerWidth <= 600 ? 1.2 : window.innerWidth <= 870? 2 : window.innerWidth <= 1200 ? 3 : 3.6}
     >
