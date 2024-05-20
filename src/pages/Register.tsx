@@ -8,6 +8,7 @@ import { getAllProducts } from "../services/getAllProducts"
 import { Loading } from "../components/Loading"
 
 export const Register = () => {
+  
   const [formData, setFormData] = useState({
     name: "",
     subtitle: "",
@@ -16,8 +17,7 @@ export const Register = () => {
     discountPercentage: "",
     features: "",
     description: "",
-  });
-
+  })
   const [errors, setErrors] = useState({
     name: "",
     subtitle: "",
@@ -30,19 +30,22 @@ export const Register = () => {
 
   const [selectedRadio, setSelectedRadio] = useState("Indoor")
   const [showModal, setShowModal] = useState(false)
+  const { mutate, isLoading } = useMutation(saveProduct, {
+    onSuccess: () => {
+      setShowModal(true)
+    }
+  })
+  const { data } = useQuery<ProductType[]>(['register'], getAllProducts)
+  const dataLength = data ? data.length + 1 : 0;
 
   const handleInputChange = (
     event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = event.target;
+    const { name, value } = event.target
     setFormData((prevData) => ({
       ...prevData,
       [name]: value,
-    }));
-  };
-
-  const { mutate, isLoading } = useMutation(saveProduct)
-  const { data } = useQuery<ProductType[]>(['register'], getAllProducts)
-  const dataLength = data ? data.length + 1 : 0;
+    }))
+  }
 
   const handleRadioChange = (event: ChangeEvent<HTMLInputElement>) => {
     setSelectedRadio(event.target.value)
@@ -72,7 +75,7 @@ export const Register = () => {
 
     if (!formData.discountPercentage)
       newErrors.discountPercentage = "Discount is required"
-    if (!/^\d*\.?\d*$/.test(formData.discountPercentage))
+    if (!/^\d+$/.test(formData.discountPercentage))
       newErrors.discountPercentage =
         "Discount should contain only numbers"
     if (parseFloat(formData.discountPercentage) < 0)
@@ -91,34 +94,31 @@ export const Register = () => {
     return Object.keys(newErrors).every(key => !newErrors[key])
   }
 
-  const closeModal = () => {
-    setShowModal(false)
-}
-
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
-    if (validate()) {
-      setShowModal(true)
-    }
-    const { name, subtitle, label, type, price, discountPercentage, features, description } = ({ ...formData, label: selectedRadio });
-    const parsedPrice = parseFloat(price)
-    const parsedDiscountPercentage = parseFloat(discountPercentage)
-    const isInSale = (parsedDiscountPercentage === 0 || Number.isNaN(parsedDiscountPercentage) ? false : true)
-    const imgUrl = "../../src/assets/adams-rib.svg"
-    const id = dataLength.toString()
 
-    mutate({ 
-      id,
-      name, 
-      subtitle, 
-      label: [label, type],
-      price: parsedPrice, 
-      isInSale,
-      discountPercentage: parsedDiscountPercentage, 
-      features, 
-      description,
-      imgUrl
-    })
+    if (!isLoading && validate()) {
+      
+      const { name, subtitle, label, type, price, discountPercentage, features, description } = ({ ...formData, label: selectedRadio });
+      const parsedPrice = parseFloat(price)
+      const parsedDiscountPercentage = parseFloat(discountPercentage)
+      const isInSale = (parsedDiscountPercentage === 0 || Number.isNaN(parsedDiscountPercentage) ? false : true)
+      const imgUrl = "../../src/assets/adams-rib.svg"
+      const id = dataLength.toString()
+
+      mutate({ 
+        id,
+        name, 
+        subtitle, 
+        label: [label, type],
+        price: parsedPrice, 
+        isInSale,
+        discountPercentage: parsedDiscountPercentage, 
+        features, 
+        description,
+        imgUrl
+      })
+    }
   }
 
   return (
@@ -130,7 +130,7 @@ export const Register = () => {
             onSubmit={handleSubmit}
             className="flex flex-col p-6 font-inter lg:pr-0 lg:p-12 lg:w-1/2"
           >
-            <p className="font-inter font-semibold text-2xl border-b border-inputBorders pb-4 mb-9">
+            <p className="font-inter font-semibold text-2xl border-b border-mainGray pb-4 mb-9">
               Plant registration
             </p>
             <label htmlFor="name" className="font-medium text-lg pb-4">
@@ -144,7 +144,7 @@ export const Register = () => {
               value={formData.name}
               onChange={handleInputChange}
               className={`py-3 px-4 rounded border-[1.5px] ${
-                errors.name ? "border-red-500" : "border-inputBorders"
+                errors.name ? "border-red-500" : "border-mainGray"
               } mb-1 bg-transparent`}
             />
             {errors.name && <p className="text-red-500">{errors.name}</p>}
@@ -160,7 +160,7 @@ export const Register = () => {
               value={formData.subtitle}
               onChange={handleInputChange}
               className={`py-3 px-4 rounded border-[1.5px] ${
-                errors.subtitle ? "border-red-500" : "border-inputBorders"
+                errors.subtitle ? "border-red-500" : "border-mainGray"
               } mb-1 bg-transparent`}
             />
             {errors.subtitle && (
@@ -178,14 +178,14 @@ export const Register = () => {
               value={formData.type}
               onChange={handleInputChange}
               className={`py-3 px-4 rounded border-[1.5px] ${
-                errors.type ? "border-red-500" : "border-inputBorders"
+                errors.type ? "border-red-500" : "border-mainGray"
               } mb-1 bg-transparent`}
             />
             {errors.type && <p className="text-red-500">{errors.type}</p>}
 
             <div className="flex justify-center items-start gap-x-3 mt-6">
               <div className="flex flex-col w-1/2">
-                <label htmlFor="price" className="font-medium text-lg pb-4 min-h-[4.5rem] sm:min-h-0">
+                <label htmlFor="price" className="font-medium text-lg pb-4 min-h-[4.5rem] sm-form:min-h-0">
                   Price
                 </label>
                 <input
@@ -196,7 +196,7 @@ export const Register = () => {
                   value={formData.price}
                   onChange={handleInputChange}
                   className={`py-3 px-4 rounded border-[1.5px] ${
-                    errors.price ? "border-red-500" : "border-inputBorders"
+                    errors.price ? "border-red-500" : "border-mainGray"
                   } bg-transparent`}
                 />
                 {errors.price && <p className="text-red-500">{errors.price}</p>}
@@ -205,7 +205,7 @@ export const Register = () => {
               <div className="flex flex-col w-1/2 overflow-auto">
                 <label
                   htmlFor="discountPercentage"
-                  className="whitespace font-medium text-lg pb-4 min-h-[4.5rem] sm:min-h-0"
+                  className="whitespace font-medium text-lg pb-4 min-h-[4.5rem] sm-form:min-h-0"
                 >
                   Discount percentage
                 </label>
@@ -219,7 +219,7 @@ export const Register = () => {
                   className={`py-3 px-4 rounded border-[1.5px] ${
                     errors.discountPercentage
                       ? "border-red-500"
-                      : "border-inputBorders"
+                      : "border-mainGray"
                   } bg-transparent`}
                 />
                 {errors.discountPercentage && (
@@ -242,14 +242,14 @@ export const Register = () => {
                       onChange={handleRadioChange}
                       className="hidden peer"
                     />
-                    <div className="w-4 h-4 rounded-full border-2 border-inputBorders transition-all peer-checked:border-moss flex items-center justify-center">
+                    <div className="w-4 h-4 rounded-full border-2 border-mainGray transition-all peer-checked:border-moss flex items-center justify-center">
                       {selectedRadio === "Indoor" && (
                         <div className="w-2 h-2 rounded-full bg-moss"></div>
                       )}
                     </div>
                     <span
                       className={`ml-2 font-medium ${
-                        selectedRadio !== "Indoor" ? "text-inputBorders" : ""
+                        selectedRadio !== "Indoor" ? "text-mainGray" : ""
                       }`}
                     >
                       Indoor
@@ -267,14 +267,14 @@ export const Register = () => {
                       onChange={handleRadioChange}
                       className="hidden peer"
                     />
-                    <div className="w-4 h-4 rounded-full border-2 border-inputBorders transition-all peer-checked:border-moss flex items-center justify-center">
+                    <div className="w-4 h-4 rounded-full border-2 border-mainGray transition-all peer-checked:border-moss flex items-center justify-center">
                       {selectedRadio === "Outdoor" && (
                         <div className="w-2 h-2 rounded-full bg-moss"></div>
                       )}
                     </div>
                     <span
                       className={`ml-2 font-medium ${
-                        selectedRadio !== "Outdoor" ? "text-inputBorders" : ""
+                        selectedRadio !== "Outdoor" ? "text-mainGray" : ""
                       }`}
                     >
                       Outdoor
@@ -294,7 +294,7 @@ export const Register = () => {
               value={formData.features}
               onChange={handleInputChange}
               className={`py-3 px-4 h-32 rounded border-[1.5px] ${
-                errors.features ? "border-red-500" : "border-inputBorders"
+                errors.features ? "border-red-500" : "border-mainGray"
               } resize-none mb-1 bg-transparent`}
             ></textarea>
             {errors.features && (
@@ -311,7 +311,7 @@ export const Register = () => {
               value={formData.description}
               onChange={handleInputChange}
               className={`py-3 px-4 h-32 rounded border-[1.5px] ${
-                errors.description ? "border-red-500" : "border-inputBorders"
+                errors.description ? "border-red-500" : "border-mainGray"
               } resize-none mb-1 bg-transparent`}
             ></textarea>
             {errors.description && (
@@ -344,10 +344,10 @@ export const Register = () => {
                   Your plant has been registered successfully.
                 </p>
                 <div className="h-full flex items-center justify-center">
-                  <FaRegCheckCircle className="w-full h-1/2 text-primaryAvacado" />
+                  <FaRegCheckCircle className="w-1/2 h-fit py-4 text-primaryAvacado" />
                 </div>
                 <button
-                  onClick={closeModal}
+                  onClick={() => setShowModal(false)}
                   className="mt-auto px-4 py-4 bg-moss text-white rounded-lg font-semibold hover:bg-opacity-80"
                 >
                   Close
