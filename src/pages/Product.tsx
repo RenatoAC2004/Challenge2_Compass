@@ -45,7 +45,7 @@ export const Product = () => {
             <h1 className="font-garamond font-bold text-5xl lg:text-[4rem] text-moss">
               {name}
             </h1>
-            <h2 className="font-lato font-bold text-xl lg:text-2xl text-inputBorders">
+            <h2 className="font-lato font-bold text-xl lg:text-2xl text-mainGray">
               {subtitle}
             </h2>
             <div className="flex gap-[1rem] mt-[1.5rem]">
