@@ -55,11 +55,9 @@ export const AllProducts = () => {
   const indexOfFirstItem = indexOfLastItem - itemsPerPage
   const currentItems = filteredPlants?.slice(indexOfFirstItem, indexOfLastItem)
   const paginate = (pageNumber: number) => setCurrentPage(pageNumber)
-  const pageNumbers = []
-  for (let i = 1; i <= Math.ceil(filteredPlants?.length || 0 / itemsPerPage); i++) {
-    pageNumbers.push(i)
-  }
-
+  const numberOfPages = Math.ceil(((filteredPlants?.length) || 0) / itemsPerPage )
+  const pageNumbers = Array.from({ length: numberOfPages }, (_, i) => i + 1 )
+ 
   return (
     <section className="bg-mainBackground">
       <div className="px-0 md:px-[4rem] py-[8rem] ">

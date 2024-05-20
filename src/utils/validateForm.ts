@@ -26,6 +26,8 @@ export class ValidateForm {
       return "Discount should contain only numbers"
     if (parseFloat(discount) < 0)
       return "Discount cannot be negative"
+    if (parseFloat(discount) >= 100)
+      return "Discount is invalid"
     return ""
   }
 
