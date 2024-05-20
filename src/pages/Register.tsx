@@ -208,7 +208,7 @@ export const Register = () => {
                   className={`py-3 px-4 rounded border-[1.5px] ${
                     errors.discountPercentage
                       ? "border-red-500"
-                      : "border-inputBorders"
+                      : "border-mainGray"
                   } bg-transparent`}
                 />
                 {errors.discountPercentage && (
@@ -234,7 +234,7 @@ export const Register = () => {
                   className={`py-3 px-4 rounded border-[1.5px] ${
                     errors.discountPercentage
                       ? "border-red-500"
-                      : "border-inputBorders"
+                      : "border-mainGray"
                   } bg-transparent`}
                 />
                 {errors.discountPercentage && (
