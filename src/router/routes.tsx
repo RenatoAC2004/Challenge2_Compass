@@ -11,14 +11,14 @@ import { useEffect } from "react";
 export const MainRoutes = () => {
 
   const ScrollToTop = () => {
-  const { pathname } = useLocation();
+    const { pathname } = useLocation();
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
-  return null;
-};
-  
+    useEffect(() => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }, [pathname]);
+    return null;
+}
+
   return (
       <>
       <ScrollToTop />
