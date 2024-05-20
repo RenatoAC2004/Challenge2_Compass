@@ -1,6 +1,4 @@
 import { useQuery } from "react-query"
-import { Footer } from "../components/Footer"
-import Navbar from "../components/Navbar"
 import { ProductType } from "../services/saveProduct"
 import { getAllProducts } from "../services/getAllProducts"
 import { Loading } from "../components/Loading"
@@ -23,7 +21,7 @@ export const AllProducts = () => {
     ? getAllProductsByPrice
     : getAllProducts
   const { data, isLoading, refetch } = useQuery<ProductType[]>(
-    ["products", saleFilter],
+    ["products", saleFilter, sortPrice],
     queryFn
   )
 
@@ -49,37 +47,21 @@ export const AllProducts = () => {
     window.scrollTo({ top: 0, behavior: "smooth" })
   }, [currentPage])
 
-  if (isLoading)
-    return (
-      <div className="w-full h-screen justify-center relative">
-        <Navbar />
-        <div className="w-full flex justify-center items-center py-[20rem]">
-          <Loading size={34} />
-        </div>
-        <Footer />
-      </div>
-    )
 
-  if (!data) return
+  const filteredPlants = label !== null && sortPrice === false ? data?.filter(plant => plant.label.includes(label)) : data 
 
-  let filteredPlants = data
-  if (label !== null && sortPrice === false) {
-    filteredPlants = data.filter(plant => plant.label.includes(label))
-  }
-
-  const itemsPerPage = window.innerWidth <= 768 ? 5 : window.innerWidth <= 1040? 8 : window.innerWidth <= 1200 ? 9 : 12
+  const itemsPerPage = window.innerWidth <= 1040 ? 5 : window.innerWidth <= 1380 ? 8 : window.innerWidth <= 1720 ? 9 : 12
   const indexOfLastItem = currentPage * itemsPerPage
   const indexOfFirstItem = indexOfLastItem - itemsPerPage
-  const currentItems = filteredPlants.slice(indexOfFirstItem, indexOfLastItem)
+  const currentItems = filteredPlants?.slice(indexOfFirstItem, indexOfLastItem)
   const paginate = (pageNumber: number) => setCurrentPage(pageNumber)
   const pageNumbers = []
-  for (let i = 1; i <= Math.ceil(filteredPlants.length / itemsPerPage); i++) {
+  for (let i = 1; i <= Math.ceil(filteredPlants?.length || 0 / itemsPerPage); i++) {
     pageNumbers.push(i)
   }
 
   return (
     <section className="bg-mainBackground">
-      <Navbar />
       <div className="px-0 md:px-[4rem] py-[8rem] ">
         <div className=" w-full h-full border-l-0 border-r-0 border-2 rounded-md border-mainGray shadow-2xl md:rounded-3xl md:border-2 p-4">
           <h1 className="font-garamond font-bold text-5xl text-center text-moss">
@@ -95,21 +77,21 @@ export const AllProducts = () => {
               onClick={() => {
                 setLabel(null),
                   setSaleFilter(false),
-                  sortPrice ? setSortPrice(false) : setSortPrice(true)
+                  setSortPrice(!sortPrice)
               }}
-              className="flex items-center gap-[0.4rem] bg-primaryAvacado px-4 py-1 rounded-lg hover:opacity-80"
+              className={`flex items-center gap-[0.4rem] border border-primaryAvacado px-4 py-1 rounded-lg hover:opacity-80 ${sortPrice && 'bg-primaryAvacado text-white'}`}
             >
-              <h1 className="font-lato font-bold text-black">Sort by price</h1>
+              <h1 className="font-lato font-bold">Sort by lowest price</h1>
               <SortAscending size={24} />
             </button>
           </div>
           <div className="my-[5px] h-[1px] w-full bg-mainGray" />
 
-          <div className="flex flex-col md:flex-row w-full h-fit ">
+          <div className="flex flex-col md:flex-row w-full h-fit">
             <div className="gap-[0.8rem] w-full flex flex-col items-start md:w-fit">
               <button
-                className="font-lato font-bold text-base hover:opacity-80 text-black border-2 border-mainGray w-full text-left px-4 py-2 transition-all 
-                rounded-xl hover:bg-moss hover:text-white"
+                className={`font-lato font-bold text-base hover:opacity-80 text-black border-2 border-mainGray w-full text-left px-4 py-2 transition-all 
+                rounded-xl hover:bg-moss hover:text-white ${label === 'indoor' && 'bg-moss text-white hover:opacity-80'}`}
                 onClick={() => {
                   setLabel("indoor"), setSaleFilter(false), setSortPrice(false)
                 }}
@@ -117,8 +99,8 @@ export const AllProducts = () => {
                 Indoor
               </button>
               <button
-                className="font-lato font-bold text-base hover:opacity-80 text-black border-2 border-mainGray w-full text-left px-4 py-2 transition-all 
-                rounded-xl hover:bg-moss hover:text-white"
+                className={`font-lato font-bold text-base hover:opacity-80 text-black border-2 border-mainGray w-full text-left px-4 py-2 transition-all 
+                rounded-xl hover:bg-moss hover:text-white ${label === 'outdoor' && 'bg-moss text-white hover:opacity-80'}`}
                 onClick={() => {
                   setLabel("outdoor"), setSaleFilter(false), setSortPrice(false)
                 }}
@@ -126,8 +108,8 @@ export const AllProducts = () => {
                 Outdoor
               </button>
               <button
-                className="font-lato font-bold text-base hover:opacity-80 text-black border-2 border-mainGray w-full text-left px-4 py-2 transition-all 
-                rounded-xl hover:bg-moss hover:text-white"
+                className={`font-lato font-bold text-base hover:opacity-80 text-black border-2 border-mainGray w-full text-left px-4 py-2 transition-all 
+                rounded-xl hover:bg-moss hover:text-white ${saleFilter && 'bg-moss text-white hover:opacity-80'}`}
                 onClick={() => {
                   setLabel(null), setSaleFilter(true), setSortPrice(false)
                 }}
@@ -144,19 +126,32 @@ export const AllProducts = () => {
                 Remove filters
               </button>
             </div>
-
-            <div className="flex flex-wrap gap-y-[3rem] gap-x-[3rem] py-12 w-fit justify-center md:p-12">
-              {currentItems.map(product => {
-                return (
-                  <div
-                    className="h-fit w-fit md:h-[34rem] md:w-[18rem] "
-                    key={product.id}
-                  >
-                    <ProductCard data={product} />
-                  </div>
-                )
-              })}
+            {isLoading ? 
+             <div className='w-full h-screen justify-center relative'>
+              <div className='w-full flex justify-center items-center py-[20rem]'>
+                <p><Loading size={25}/></p>
+              </div>
             </div>
+            : !currentItems?.length ? 
+            <div className='w-full h-screen justify-center relative'>
+              <div className='w-full flex justify-center items-center py-[20rem]'>
+                <p className="font-lato font-medium text-xl leading-[auto]">No products was registered</p>
+              </div>
+            </div>
+            :
+              <div className="flex flex-wrap gap-y-[2rem] gap-x-[3rem] py-12 w-fit justify-center md:p-12 md:gap-y-[1rem]">
+                {currentItems.map(product => {
+                  return (
+                    <div
+                      className="h-fit w-fit md:h-[34rem] md:w-[18rem] "
+                      key={product.id}
+                    >
+                      <ProductCard data={product} />
+                    </div>
+                  )
+                })}
+              </div>
+            }
           </div>
           <ul className="flex justify-center mt-4">
             {pageNumbers.map(number => (
@@ -175,7 +170,6 @@ export const AllProducts = () => {
           </ul>
         </div>
       </div>
-      <Footer />
     </section>
   )
 }

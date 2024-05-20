@@ -31,7 +31,7 @@ export const MainRoutes = () => {
           <Route path="/register" element={<Register />} />
           <Route path="/aboutus" element={<AboutUs />} />
           <Route path="/products" element={<AllProducts />} />
-          <Route path="*" element={<Error/>}/>
+          <Route path="*" element={<Error />}/>
         </Route>
       </Routes>
     </>

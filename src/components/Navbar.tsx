@@ -79,7 +79,7 @@ const Navbar = () => {
       >
         <div className="flex justify-center items-center border-b-2 border-moss pb-4">
           <div className="flex rounded-full bg-slate-100 justify-center items-center w-fit p-8 border-2 border-black shadow-md">
-            <img src="src\assets\Logo.svg" alt="Logo_MobileMenu" className="" />
+            <img src="src\assets\icon\Logo.svg" alt="Logo_MobileMenu" className="" />
           </div>
         </div>
 

@@ -1,7 +1,8 @@
-import { Link } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import MainButton from "../../../components/MainButton"
 
 export const StepsSection = () => {
+  const navigate = useNavigate()
   return (
     <section className="p-8 lg:p-[3.125rem] xl:p-[6.25rem] h-full">
       <h1 className="text-moss font-bold text-5xl lg:text-[4rem] font-garamond text-center mb-4">
@@ -85,9 +86,7 @@ export const StepsSection = () => {
             joys of gardening with us!
           </p>
           <div>
-            <Link to={"*"}>
-            <MainButton text="See more photos" />
-            </Link>
+            <MainButton text="See more photos" onClick={() => navigate('/see-more-photos')}/>
           </div>
         </div>
       </div>
@@ -115,7 +114,7 @@ export const StepsSection = () => {
           gardening with us!
         </p>
         <div>
-          <MainButton text="See more photos" />
+          <MainButton text="See more photos" onClick={() => navigate('/see-more-photos')} />
         </div>
       </div>
 
@@ -142,7 +141,7 @@ export const StepsSection = () => {
             the way. Get ready to explore our virtual garden and discover the
             joys of gardening with us!
           </p>
-          <MainButton text="See more photos" />
+          <MainButton text="See more photos" onClick={() => navigate('/see-more-photos')} />
         </div>
       </div>
     </section>

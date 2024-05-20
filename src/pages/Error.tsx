@@ -1,11 +1,9 @@
-import Navbar from "../components/Navbar"
-import { Footer } from "../components/Footer"
-import { Link } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
 const Error = () => {
+  const navigate = useNavigate()
   return (
     <>
-      <Navbar />
 
       <section className="flex flex-col items-center justify-center h-screen w-full pt-[5.5rem] bg-white overflow-hidden">
         <img
@@ -20,15 +18,14 @@ const Error = () => {
             <span className="text-primaryAvacado"> photosynthesis...</span> err,
             construction.
           </p>
-          <Link to={"/"}>
-            <button className="px-8 py-4 bg-moss text-white rounded-lg transition-all font-raleway hover:opacity-75">
+            <button 
+              className="px-8 py-4 bg-moss text-white rounded-lg transition-all font-raleway hover:opacity-75"
+              onClick={() => navigate('/')}
+            >
               Return to Home Page
             </button>
-          </Link>
         </div>
       </section>
-
-      <Footer />
     </>
   )
 }
