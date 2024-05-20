@@ -193,7 +193,7 @@ export const Register = () => {
             <div className="flex justify-center items-start gap-x-3 mt-6">
               <div className="flex flex-col w-1/2 overflow-auto">
                 <label
-                  htmlFor="discountPercentage"
+                  htmlFor="price"
                   className="whitespace font-medium text-lg pb-4 min-h-[4.5rem] sm:min-h-0"
                 >
                   Price
@@ -206,12 +206,12 @@ export const Register = () => {
                   onValueChange={handlePriceChange}
                   prefix="$"
                   className={`py-3 px-4 rounded border-[1.5px] ${
-                    errors.discountPercentage
+                    errors.price
                       ? "border-red-500"
                       : "border-mainGray"
                   } bg-transparent`}
                 />
-                {errors.discountPercentage && (
+                {errors.price && (
                   <p className="text-red-500">{errors.price}</p>
                 )}
               </div>
