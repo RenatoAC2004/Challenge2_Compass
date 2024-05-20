@@ -7,7 +7,7 @@ export const StepsSection = () => {
         Steps To Take Care Of Your
         <span className="text-primaryAvacado"> Plants</span>
       </h1>
-      <p className="font-raleway text-center text-inputBorders">
+      <p className="font-raleway text-center text-mainGray">
         By following these three steps - proper watering, appropriate sunlight,
         and providing essential nutrients - you'll be well on your way to
         maintaining healthy and thriving plants.

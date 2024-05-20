@@ -21,7 +21,7 @@ export const ProductCard = ( { data } : {data:ProductType}) => {
               :
                 <div>
                   <span className="font-raleway text-base font-normal text-primaryLunarGreen mt-[7px]">${discountCalculate(price, discountPercentage)}</span>
-                  <span className="font-raleway text-base font-normal text-inputBorders mt-[7px] line-through ml-[1rem]">${price}</span>
+                  <span className="font-raleway text-base font-normal text-mainGray mt-[7px] line-through ml-[1rem]">${price}</span>
                 </div>
             }
               <div className="h-fit flex flex-wrap gap-[0.875rem] mt-6">
