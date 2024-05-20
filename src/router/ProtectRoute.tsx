@@ -28,5 +28,11 @@ export const ProtectRoute = () => {
     )
   }
 
-  return <Outlet />
+  return (
+    <>
+      <Navbar />
+      <Outlet />
+      <Footer />
+    </>
+  )
 }

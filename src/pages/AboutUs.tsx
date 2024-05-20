@@ -1,11 +1,8 @@
 import { FaLinkedin } from "react-icons/fa"
-import { Footer } from "../components/Footer"
-import Navbar from "../components/Navbar"
 
 const AboutUs = () => {
   return (
     <>
-      <Navbar />
       <div className="bg-mainBackground select-none min-h-screen w-full pt-16 flex flex-col">
         <h1 className="text-7xl flex justify-center font-garamond font-bold text-moss mt-5">
           About Us
@@ -38,7 +35,7 @@ const AboutUs = () => {
             },
             {
               name: "Frederick Rost",
-              imgSrc: "/src/assets/renato.jpeg",
+              imgSrc: "/src/assets/Fred.png",
               github: "https://github.com/rostfred",
             },
           ].map((person, index) => (
@@ -85,7 +82,6 @@ const AboutUs = () => {
           plants.
         </h1>
       </div>
-      <Footer />
     </>
   )
 }

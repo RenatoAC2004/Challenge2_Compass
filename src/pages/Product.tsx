@@ -3,9 +3,8 @@ import { getProduct } from "../services/getProduct"
 import { useNavigate, useParams } from "react-router-dom"
 import { Loading } from "../components/Loading"
 import { ProductType } from "../services/saveProduct"
-import { Footer } from "../components/Footer"
-import Navbar from "../components/Navbar"
 import MainButton from "../components/MainButton"
+import ImgError from "../assets/fallenPot.jpg"
 
 export const Product = () => {
   const { productId = "" } = useParams()
@@ -19,24 +18,34 @@ export const Product = () => {
   if (isLoading) {
     return (
       <div className='w-full h-screen justify-center relative'>
-        <Navbar />
         <div className='w-full flex justify-center items-center py-[20rem]'>
           <Loading size={34} />
         </div>
-        <Footer />
       </div>
     );
   }
 
   if (!data) {
     return (
-      <div className='w-full h-screen justify-center relative'>
-        <Navbar />
-        <div className='w-full flex justify-center items-center py-[20rem]'>
-          <p>PDP unavailable</p>
+      <section className="flex flex-col items-center justify-center h-screen w-full pt-[5.5rem] bg-white overflow-hidden">
+        <img
+          src={ImgError}
+          alt="Dying flower"
+          className="grayscale w-fit"
+        />
+        <div className="w-full flex flex-col items-center justify-center gap-y-4 mt-[2rem]">
+          <p className="text-2xl">
+            Sorry! We are
+            <span className="text-primaryAvacado"> Implementing...</span> this plant
+          </p>
+            <button 
+              className="px-8 py-4 bg-moss text-white rounded-lg transition-all font-raleway hover:opacity-75 mt-[2rem]"
+              onClick={() => navigate('/')}
+            >
+              Return to Home Page
+            </button>
         </div>
-        <Footer />
-      </div>
+      </section>
     );
   }
   
@@ -44,7 +53,6 @@ export const Product = () => {
 
   return (
     <section>
-      <Navbar />
       <div className="bg-mainBackground py-[8.8125rem] px-14 flex flex-col lg:px-[6.25rem] justify-center">
         <div className="pb-12 flex flex-col gap-[2.563rem] items-center md:flex-row lg:gap-[5.125rem] xxl:py-[6.25rem] ">
           <img
@@ -126,7 +134,6 @@ export const Product = () => {
           </p>
         </div>
       </div>
-      <Footer />
     </section>
   )
 }

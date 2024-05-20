@@ -1,6 +1,4 @@
 import { useQuery } from "react-query"
-import { Footer } from "../components/Footer"
-import Navbar from "../components/Navbar"
 import { ProductType } from "../services/saveProduct"
 import { getAllProducts } from "../services/getAllProducts"
 import { Loading } from "../components/Loading"
@@ -64,7 +62,6 @@ export const AllProducts = () => {
 
   return (
     <section className="bg-mainBackground">
-      <Navbar />
       <div className="px-0 md:px-[4rem] py-[8rem] ">
         <div className=" w-full h-full border-l-0 border-r-0 border-2 rounded-md border-mainGray shadow-2xl md:rounded-3xl md:border-2 p-4">
           <h1 className="font-garamond font-bold text-5xl text-center text-moss">
@@ -138,7 +135,7 @@ export const AllProducts = () => {
             : !currentItems?.length ? 
             <div className='w-full h-screen justify-center relative'>
               <div className='w-full flex justify-center items-center py-[20rem]'>
-                <p>No products was registered</p>
+                <p className="font-lato font-medium text-xl leading-[auto]">No products was registered</p>
               </div>
             </div>
             :
@@ -173,7 +170,6 @@ export const AllProducts = () => {
           </ul>
         </div>
       </div>
-      <Footer />
     </section>
   )
 }
