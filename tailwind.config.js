@@ -16,7 +16,7 @@ module.exports = {
         primaryAvacado: "#8A9B6E",
         borderColor: '#DDDEA0',
         textSecondary: "#808276",
-        inputBorders: "#AFB2AA",
+        mainGray: "#AFB2AA",
         mainBackground: "#F0F1EE",
         title: "#1E1E24",
         cardBackground: "#F8F9FB",
@@ -25,6 +25,9 @@ module.exports = {
       },
       backgroundImage: {
         'footer-texture': "url('./src/assets/imgFundo.png')"
+      },
+      screens: {
+        'sm-form': '450px',
       },
     }
   },

@@ -71,11 +71,11 @@ export const AllProducts = () => {
     <section className="bg-mainBackground">
       <Navbar />
       <div className="px-[8rem] py-[8rem]">
-        <div className="mb-[5px] h-[1px] w-full bg-inputBorders" />
+        <div className="mb-[5px] h-[1px] w-full bg-mainGray" />
         <h1 className="font-inter font-semibold text-2xl leading-auto text-moss">
           Products List
         </h1>
-        <div className="my-[5px] h-[1px] w-full bg-inputBorders" />
+        <div className="my-[5px] h-[1px] w-full bg-mainGray" />
         <div className="flex justify-between">
           <div className="flex items-center gap-[0.4rem]">
             <Funnel size={21} />
@@ -97,7 +97,7 @@ export const AllProducts = () => {
             <SortAscending size={24} />
           </button>
         </div>
-        <div className="my-[5px] h-[1px] w-full bg-inputBorders" />
+        <div className="my-[5px] h-[1px] w-full bg-mainGray" />
 
         <div className="w-full h-fit flex">
           <div className="gap-[0.8rem] pr-[3rem] w-[11rem] flex flex-col items-start pt-[0.3rem]">
@@ -152,7 +152,7 @@ export const AllProducts = () => {
               className={`px-3 py-1 mr-2 cursor-pointer rounded ${
                 currentPage === number
                   ? "bg-moss text-white"
-                  : "bg-inputBorders text-moss"
+                  : "bg-mainGray text-moss"
               }`}
               onClick={() => paginate(number)}
             >

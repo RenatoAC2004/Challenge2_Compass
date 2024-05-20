@@ -36,7 +36,7 @@ export const Product = () => {
           <img src={imgUrl} alt={name} className="w-[43.125rem] h-[43.125rem]"/>
           <div className="w-[43.75rem] h-auto">
             <h1 className="font-garamond font-bold text-[4rem] leading-[auto] text-moss">{name}</h1>
-            <h2 className="font-lato font-bold text-2xl leading-[auto] text-inputBorders">{subtitle}</h2>
+            <h2 className="font-lato font-bold text-2xl leading-[auto] text-mainGray">{subtitle}</h2>
             <div className="flex gap-[1rem] mt-[1.5rem]">
               {label.map(label => (
               <div className="h-[2.4rem] justify-center flex items-center border-[0.125rem] border-greenLime rounded-full" key={label}>
