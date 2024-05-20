@@ -1,12 +1,16 @@
 import { useState, useEffect } from "react";
 import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/clerk-react";
 import { IoIosClose, IoIosMenu } from "react-icons/io";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [menuIcon, setMenuIcon] = useState(<IoIosMenu size={40} />);
   const [scrolled, setScrolled] = useState(false);
+
+  const location = useLocation()
+
+  const { pathname } = location
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -38,16 +42,16 @@ const Navbar = () => {
       >
         <img src="../../src/assets/Logo.svg" alt="Logo" />
         <div className="hidden p-4 font-raleway gap-x-4 md:flex">
-          <Link to="/" className="px-3 text-primaryAvacado hover:font-bold">
+          <Link to="/" className={`px-3hover:font-bold ${pathname === '/' ? 'text-primaryAvacado' : ''}`}>
             Home
           </Link>
-          <Link to="/register" className="px-3 hover:font-bold">
+          <Link to="/register" className={`px-3hover:font-bold ${pathname === '/register' ? 'text-primaryAvacado' : ''}`}>
             Register
           </Link>
-          <Link to="/products" className="px-3 hover:font-bold">
+          <Link to="/products" className={`px-3hover:font-bold ${pathname === '/products' ? 'text-primaryAvacado' : ''}`}>
             Products
           </Link>
-          <Link to="/aboutus" className="px-3 hover:font-bold">
+          <Link to="/aboutus" className={`px-3hover:font-bold ${pathname === '/aboutus' ? 'text-primaryAvacado' : ''}`}>
             About us
           </Link>
         </div>
@@ -82,25 +86,25 @@ const Navbar = () => {
         <div className="flex flex-col text-center gap-y-2 py-4 border-b-2 border-moss">
           <Link
             to="/"
-            className="px-2 py-3 bg-white rounded-lg shadow-md transition-all hover:bg-moss hover:text-white"
+            className={`px-2 py-3  rounded-lg shadow-md transition-all  ${pathname === '/' ? 'bg-moss text-white font-bold hover:opacity-80' : 'bg-white hover:bg-moss hover:text-white'}`}            
           >
             Home
           </Link>
           <Link
             to="/register"
-            className="px-2 py-3 bg-white rounded-lg shadow-md transition-all hover:bg-moss hover:text-white"
+            className={`px-2 py-3  rounded-lg shadow-md transition-all  ${pathname === '/register' ? 'bg-moss text-white font-bold hover:opacity-80' : 'bg-white hover:bg-moss hover:text-white'}`}
           >
             Register
           </Link>
           <Link
-            to="/product"
-            className="px-2 py-3 bg-white rounded-lg shadow-md transition-all hover:bg-moss hover:text-white"
+            to="/products"
+            className={`px-2 py-3  rounded-lg shadow-md transition-all  ${pathname === '/products' ? 'bg-moss text-white font-bold hover:opacity-80' : 'bg-white hover:bg-moss hover:text-white'}`}
           >
             Products
           </Link>
           <Link
             to="/aboutus"
-            className="px-2 py-3 bg-white rounded-lg shadow-md transition-all hover:bg-moss hover:text-white"
+            className={`px-2 py-3  rounded-lg shadow-md transition-all  ${pathname === '/aboutus' ? 'bg-moss text-white font-bold hover:opacity-80' : 'bg-white hover:bg-moss hover:text-white'}`}
           >
             About us
           </Link>
