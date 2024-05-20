@@ -335,8 +335,8 @@ export const Register = () => {
           />
 
           {showModal && (
-            <div className="fixed inset-0 flex items-center justify-center bg-primaryAvacado bg-opacity-50 z-50">
-              <div className="flex flex-col bg-white p-8 rounded-lg h-3/5">
+            <div className="fixed inset-0 flex items-center justify-center bg-primaryAvacado bg-opacity-50 z-50 p-4">
+              <div className="flex flex-col bg-white p-8 rounded-lg h-fit">
                 <p className="text-5xl font-pacifico font-bold text-center mb-4">
                   Success!
                 </p>
@@ -344,11 +344,11 @@ export const Register = () => {
                   Your plant has been registered successfully.
                 </p>
                 <div className="h-full flex items-center justify-center">
-                  <FaRegCheckCircle className="w-1/2 h-fit py-4 text-primaryAvacado" />
+                  <FaRegCheckCircle className="w-1/2 h-fit py-12 text-primaryAvacado" />
                 </div>
                 <button
                   onClick={() => setShowModal(false)}
-                  className="mt-auto px-4 py-4 bg-moss text-white rounded-lg font-semibold hover:bg-opacity-80"
+                  className="px-4 py-4 bg-moss text-white rounded-lg font-semibold hover:bg-opacity-80"
                 >
                   Close
                 </button>

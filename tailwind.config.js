@@ -8,28 +8,36 @@ module.exports = {
         garamond: ["EB Garamond", "sans-serif"],
         raleway: ["Raleway", "sans-serif"],
         pacifico: ["Pacifico", "sans-serif"],
-        lato: ["Lato", "sans-serif"]
+        lato: ["Lato", "sans-serif"],
       },
       colors: {
         moss: "#354733",
         primaryLunarGreen: "#1A3306",
         primaryAvacado: "#8A9B6E",
-        borderColor: '#DDDEA0',
+        borderColor: "#DDDEA0",
         textSecondary: "#808276",
         mainGray: "#AFB2AA",
         mainBackground: "#F0F1EE",
         title: "#1E1E24",
         cardBackground: "#F8F9FB",
         greenLime: "#83E281",
-        greenCactus: "#158212"
+        greenCactus: "#158212",
       },
       backgroundImage: {
-        'footer-texture': "url('./src/assets/imgFundo.png')"
+        "footer-texture": "url('./src/assets/imgFundo.png')",
       },
-      screens: {
-        'sm-form': '450px',
-      },
-    }
+    },
+    screens: {
+      xs: "480px",
+      sm: "640px",
+      md: "768px",
+      lg: "1024px",
+      xl: "1280px",
+      "2xl": "1536px",
+      xxl: "1700px",
+      'sm-form': '450px',
+    },
+
   },
-  plugins: []
-};
+  plugins: [],
+}

@@ -11,11 +11,11 @@ import { getAllProductsByPrice } from "../services/getAllProdctsByPrice"
 import { Funnel, SortAscending } from "phosphor-react"
 
 export const AllProducts = () => {
-  // Hooks
   const [label, setLabel] = useState<null | string>(null)
   const [saleFilter, setSaleFilter] = useState<boolean>(false)
   const [sortPrice, setSortPrice] = useState<boolean>(false)
   const [currentPage, setCurrentPage] = useState<number>(1)
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   const queryFn = saleFilter
     ? getAllProductsWithSale
@@ -28,6 +28,18 @@ export const AllProducts = () => {
   )
 
   useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  useEffect(() => {
     if (refetch) {
       refetch()
     }
@@ -37,7 +49,6 @@ export const AllProducts = () => {
     window.scrollTo({ top: 0, behavior: "smooth" })
   }, [currentPage])
 
-  // Filter products
   if (isLoading)
     return (
       <div className="w-full h-screen justify-center relative">
@@ -56,8 +67,7 @@ export const AllProducts = () => {
     filteredPlants = data.filter(plant => plant.label.includes(label))
   }
 
-  // Pagination
-  const itemsPerPage = 9
+  const itemsPerPage = window.innerWidth <= 768 ? 5 : window.innerWidth <= 1040? 8 : window.innerWidth <= 1200 ? 9 : 12
   const indexOfLastItem = currentPage * itemsPerPage
   const indexOfFirstItem = indexOfLastItem - itemsPerPage
   const currentItems = filteredPlants.slice(indexOfFirstItem, indexOfLastItem)
@@ -70,96 +80,100 @@ export const AllProducts = () => {
   return (
     <section className="bg-mainBackground">
       <Navbar />
-      <div className="px-[8rem] py-[8rem]">
-        <div className="mb-[5px] h-[1px] w-full bg-mainGray" />
-        <h1 className="font-inter font-semibold text-2xl leading-auto text-moss">
-          Products List
-        </h1>
-        <div className="my-[5px] h-[1px] w-full bg-mainGray" />
-        <div className="flex justify-between">
-          <div className="flex items-center gap-[0.4rem]">
-            <Funnel size={21} />
-            <h2 className="font-lato font-bold text-base leading-[auto] text-black">
-              filter by:{" "}
-            </h2>
+      <div className="px-0 md:px-[4rem] py-[8rem] ">
+        <div className=" w-full h-full border-l-0 border-r-0 border-2 rounded-md border-mainGray shadow-2xl md:rounded-3xl md:border-2 p-4">
+          <h1 className="font-garamond font-bold text-5xl text-center text-moss">
+            Products <span className="text-primaryAvacado">List</span>
+          </h1>
+          <div className="my-[5px] h-[1px] w-full bg-mainGray" />
+          <div className="flex justify-between pt-8">
+            <div className="flex items-center gap-[0.4rem]">
+              <Funnel size={21} />
+              <h2 className="font-lato font-bold text-black">filter by:</h2>
+            </div>
+            <button
+              onClick={() => {
+                setLabel(null),
+                  setSaleFilter(false),
+                  sortPrice ? setSortPrice(false) : setSortPrice(true)
+              }}
+              className="flex items-center gap-[0.4rem] bg-primaryAvacado px-4 py-1 rounded-lg hover:opacity-80"
+            >
+              <h1 className="font-lato font-bold text-black">Sort by price</h1>
+              <SortAscending size={24} />
+            </button>
           </div>
-          <button
-            onClick={() => {
-              setLabel(null),
-              setSaleFilter(false),
-              sortPrice ? setSortPrice(false) : setSortPrice(true)
-            }}
-            className="flex items-center gap-[0.4rem] hover:opacity-80"
-          >
-            <h1 className="font-lato font-bold text-base leading-[auto] text-black">
-              Sort by price
-            </h1>
-            <SortAscending size={24} />
-          </button>
-        </div>
-        <div className="my-[5px] h-[1px] w-full bg-mainGray" />
+          <div className="my-[5px] h-[1px] w-full bg-mainGray" />
 
-        <div className="w-full h-fit flex">
-          <div className="gap-[0.8rem] pr-[3rem] w-[11rem] flex flex-col items-start pt-[0.3rem]">
-            <button
-              className="font-lato font-bold text-base leading-[auto] hover:opacity-80 text-black"
-              onClick={() => {
-                setLabel("indoor"), setSaleFilter(false), setSortPrice(false)
-              }}
-            >
-              Indoor
-            </button>
-            <button
-              className="font-lato font-bold text-base leading-[auto] hover:opacity-80 text-black"
-              onClick={() => {
-                setLabel("outdoor"), setSaleFilter(false), setSortPrice(false)
-              }}
-            >
-              Outdoor
-            </button>
-            <button
-              className="font-lato font-bold text-base leading-[auto] hover:opacity-80 text-black"
-              onClick={() => {
-                setLabel(null), setSaleFilter(true), setSortPrice(false)
-              }}
-            >
-              In Sale
-            </button>
-            <button
-              className="font-lato font-bold text-base leading-[auto] hover:opacity-80 text-black"
-              onClick={() => {
-                setLabel(null), setSaleFilter(false), setSortPrice(false)
-              }}
-            >
-              Remove filters
-            </button>
-          </div>
+          <div className="flex flex-col md:flex-row w-full h-fit ">
+            <div className="gap-[0.8rem] w-full flex flex-col items-start md:w-fit">
+              <button
+                className="font-lato font-bold text-base hover:opacity-80 text-black border-2 border-mainGray w-full text-left px-4 py-2 transition-all 
+                rounded-xl hover:bg-moss hover:text-white"
+                onClick={() => {
+                  setLabel("indoor"), setSaleFilter(false), setSortPrice(false)
+                }}
+              >
+                Indoor
+              </button>
+              <button
+                className="font-lato font-bold text-base hover:opacity-80 text-black border-2 border-mainGray w-full text-left px-4 py-2 transition-all 
+                rounded-xl hover:bg-moss hover:text-white"
+                onClick={() => {
+                  setLabel("outdoor"), setSaleFilter(false), setSortPrice(false)
+                }}
+              >
+                Outdoor
+              </button>
+              <button
+                className="font-lato font-bold text-base hover:opacity-80 text-black border-2 border-mainGray w-full text-left px-4 py-2 transition-all 
+                rounded-xl hover:bg-moss hover:text-white"
+                onClick={() => {
+                  setLabel(null), setSaleFilter(true), setSortPrice(false)
+                }}
+              >
+                In Sale
+              </button>
+              <button
+                className="font-lato font-bold whitespace-nowrap hover:opacity-80 text-black border-2 border-mainGray w-full text-left px-4 py-2 transition-all 
+                rounded-xl hover:bg-moss hover:text-white"
+                onClick={() => {
+                  setLabel(null), setSaleFilter(false), setSortPrice(false)
+                }}
+              >
+                Remove filters
+              </button>
+            </div>
 
-          <div className="flex flex-wrap gap-y-[3rem] gap-x-[3rem] py-[3rem] w-fit">
-            {currentItems.map(product => {
-              return (
-                <div className="h-[34rem] w-[22rem]" key={product.id}>
-                  <ProductCard data={product} />
-                </div>
-              )
-            })}
+            <div className="flex flex-wrap gap-y-[3rem] gap-x-[3rem] py-12 w-fit justify-center md:p-12">
+              {currentItems.map(product => {
+                return (
+                  <div
+                    className="h-fit w-fit md:h-[34rem] md:w-[18rem] "
+                    key={product.id}
+                  >
+                    <ProductCard data={product} />
+                  </div>
+                )
+              })}
+            </div>
           </div>
+          <ul className="flex justify-center mt-4">
+            {pageNumbers.map(number => (
+              <li
+                key={number}
+                className={`px-3 py-1 mr-2 cursor-pointer rounded ${
+                  currentPage === number
+                    ? "bg-moss text-white"
+                    : "bg-mainGray text-moss"
+                }`}
+                onClick={() => paginate(number)}
+              >
+                {number}
+              </li>
+            ))}
+          </ul>
         </div>
-        <ul className="flex justify-center mt-4">
-          {pageNumbers.map(number => (
-            <li
-              key={number}
-              className={`px-3 py-1 mr-2 cursor-pointer rounded ${
-                currentPage === number
-                  ? "bg-moss text-white"
-                  : "bg-mainGray text-moss"
-              }`}
-              onClick={() => paginate(number)}
-            >
-              {number}
-            </li>
-          ))}
-        </ul>
       </div>
       <Footer />
     </section>
