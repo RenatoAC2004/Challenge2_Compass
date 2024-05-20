@@ -28,23 +28,38 @@ export const Carousel = ({isInSale}:CarouselProps) => {
   }, []);
   
   const queryFn = isInSale ? getAllProductsWithSale : getAllProductsWithoutSale
+
+  const slidesPerView = window.innerWidth <= 600 ? 1.2 : window.innerWidth <= 870? 2 : window.innerWidth <= 1200 ? 3 : 3.6
   
   const { data, isLoading } = useQuery<ProductType[]>(['products', isInSale], queryFn)
-    if(isLoading) return <div className="w-full max-h-[35rem] flex justify-center items-center py-[20rem]"> <Loading size={20} /> </div> 
-    if(!data) return
 
+  if (!data && !isLoading) return 
+  
   return (
-    <Swiper className="w-full h-fit justify-center overflow-visible select-none"
+    <Swiper
+      className="w-full h-fit justify-center overflow-visible select-none"
       spaceBetween={48}
-      slidesPerView={window.innerWidth <= 600 ? 1.2 : window.innerWidth <= 870? 2 : window.innerWidth <= 1200 ? 3 : 3.6}
+      slidesPerView={slidesPerView}
     >
-      {data.map((data) => (
-        <SwiperSlide key={data.id}>
-          <ProductCard
-            data={data}
-          />
-        </SwiperSlide>
-      ))}
+      {isLoading ? (
+        <div className=" flex gap-x-[5rem]">
+          {Array.from({ length: Math.floor(slidesPerView) }, (_, index) => index + 1).map((index) => (
+          <div key={index} className="w-full h-fit flex flex-col animate-pulse">
+              <div className="h-[200px] bg-gray-200 w-full dark:bg-gray-700 mb-4"></div>
+              <div className="l bg-gray-200 rounded-full dark:bg-gray-700 max-w-[360px] mb-2.5"></div>
+              <div className="h-[30px] bg-gray-200 mx-[0.2rem] dark:bg-gray-700 mb-2.5"></div>
+              <div className="h-[30px] bg-gray-200 mx-[0.2rem] dark:bg-gray-700 max-w-[330px] mb-2.5"></div>
+              <div className="h-[30px] bg-gray-200 mx-[0.2rem] dark:bg-gray-700 max-w-[330px] mb-2.5"></div>
+          </div>
+          ))}
+        </div>
+      ) : (
+        data.map((product) => (
+          <SwiperSlide key={product.id}>
+            <ProductCard data={product} />
+          </SwiperSlide>
+        ))
+      )}
     </Swiper>
   )
 }
