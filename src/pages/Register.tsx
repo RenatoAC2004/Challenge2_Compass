@@ -5,6 +5,7 @@ import { ProductType, saveProduct } from "../services/saveProduct"
 import { getAllProducts } from "../services/getAllProducts"
 import { Loading } from "../components/Loading"
 import { ValidateForm } from "../utils/validateForm"
+import { NumericFormat } from "react-number-format"
 
 interface Input {
   name: string,
@@ -84,6 +85,22 @@ export const Register = () => {
     }
     setErrors(newErrors)
     return Object.values(newErrors).every(value => !value.trim());
+  }
+
+  const handlePriceChange = (values: any) => {
+    const { value } = values
+    setFormData(prevData => ({
+      ...prevData,
+      price: value,
+    }))
+  }
+
+  const handleDiscountChange = (values: any) => {
+    const { value } = values
+    setFormData(prevData => ({
+      ...prevData,
+      discountPercentage: value,
+    }))
   }
 
   const handleSubmit = (event: FormEvent) => {
@@ -174,42 +191,50 @@ export const Register = () => {
             {errors.type && <p className="text-red-500">{errors.type}</p>}
 
             <div className="flex justify-center items-start gap-x-3 mt-6">
-              <div className="flex flex-col w-1/2">
-                <label htmlFor="price" className="font-medium text-lg pb-4 min-h-[4.5rem] sm-form:min-h-0">
+              <div className="flex flex-col w-1/2 overflow-auto">
+                <label
+                  htmlFor="discountPercentage"
+                  className="whitespace font-medium text-lg pb-4 min-h-[4.5rem] sm:min-h-0"
+                >
                   Price
                 </label>
-                <input
-                  type="number"
+                <NumericFormat
                   name="price"
                   id="price"
                   placeholder="$139.99"
                   value={formData.price}
-                  onChange={handleInputChange}
+                  onValueChange={handlePriceChange}
+                  prefix="$"
                   className={`py-3 px-4 rounded border-[1.5px] ${
-                    errors.price ? "border-red-500" : "border-mainGray"
+                    errors.discountPercentage
+                      ? "border-red-500"
+                      : "border-inputBorders"
                   } bg-transparent`}
                 />
-                {errors.price && <p className="text-red-500">{errors.price}</p>}
+                {errors.discountPercentage && (
+                  <p className="text-red-500">{errors.discountPercentage}</p>
+                )}
               </div>
+              
 
               <div className="flex flex-col w-1/2 overflow-auto">
                 <label
                   htmlFor="discountPercentage"
-                  className="whitespace font-medium text-lg pb-4 min-h-[4.5rem] sm-form:min-h-0"
+                  className="whitespace font-medium text-lg pb-4 min-h-[4.5rem] sm:min-h-0"
                 >
                   Discount percentage
                 </label>
-                <input
-                  type="number"
+                <NumericFormat
                   name="discountPercentage"
                   id="discountPercentage"
                   placeholder="20%"
                   value={formData.discountPercentage}
-                  onChange={handleInputChange}
+                  onValueChange={handleDiscountChange}
+                  suffix="%"
                   className={`py-3 px-4 rounded border-[1.5px] ${
                     errors.discountPercentage
                       ? "border-red-500"
-                      : "border-mainGray"
+                      : "border-inputBorders"
                   } bg-transparent`}
                 />
                 {errors.discountPercentage && (
