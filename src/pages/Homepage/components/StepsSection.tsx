@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import MainButton from "../../../components/MainButton"
 
 export const StepsSection = () => {
@@ -84,7 +85,9 @@ export const StepsSection = () => {
             joys of gardening with us!
           </p>
           <div>
+            <Link to={"*"}>
             <MainButton text="See more photos" />
+            </Link>
           </div>
         </div>
       </div>
