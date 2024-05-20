@@ -12,20 +12,34 @@ export const Product = () => {
 
   const { productId = '' } = useParams()
   const fetchProduct = () => getProduct(productId)
-  const { data, isLoading } = useQuery<ProductType>(`product-${productId}`, fetchProduct)
-  
-  if(isLoading)if(isLoading) return (
-    <div className='w-full h-screen justify-center relative'>
+  const { data, isLoading } = useQuery<ProductType>(`product-${productId}`, fetchProduct, {
+    retry: false
+  });
+
+  if (isLoading) {
+    return (
+      <div className='w-full h-screen justify-center relative'>
         <Navbar />
         <div className='w-full flex justify-center items-center py-[20rem]'>
-        <Loading size={34} />
+          <Loading size={34} />
         </div>
-        <Footer /> 
+        <Footer />
       </div>
-  )
-    
-  if(!data) return <div>errorpage</div>
+    );
+  }
 
+  if (!data) {
+    return (
+      <div className='w-full h-screen justify-center relative'>
+        <Navbar />
+        <div className='w-full flex justify-center items-center py-[20rem]'>
+          <p>PDP unavailable</p>
+        </div>
+        <Footer />
+      </div>
+    );
+  }
+  
   const {imgUrl, name, description, label, price, features, subtitle} = data
 
   return (

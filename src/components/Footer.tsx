@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import logo from "../assets/LogoWhite.svg"
+import logo from "../assets/icon/LogoWhite.svg"
 
 export const Footer = () => {
   return (
