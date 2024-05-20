@@ -2,9 +2,13 @@ import { ChangeEvent, FormEvent, useState } from "react"
 import Navbar from "../components/Navbar"
 import { Footer } from "../components/Footer"
 import { FaRegCheckCircle } from "react-icons/fa"
+import { useMutation, useQuery } from "react-query"
+import { ProductType, saveProduct } from "../services/saveProduct"
+import { getAllProducts } from "../services/getAllProducts"
+import { Loading } from "../components/Loading"
 
 export const Register = () => {
-  const [formValues, setFormValues] = useState({
+  const [formData, setFormData] = useState({
     name: "",
     subtitle: "",
     type: "",
@@ -12,7 +16,7 @@ export const Register = () => {
     discountPercentage: "",
     features: "",
     description: "",
-  })
+  });
 
   const [errors, setErrors] = useState({
     name: "",
@@ -28,11 +32,17 @@ export const Register = () => {
   const [showModal, setShowModal] = useState(false)
 
   const handleInputChange = (
-    event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value } = event.target
-    setFormValues({ ...formValues, [name]: value })
-  }
+    event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = event.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  const { mutate, isLoading } = useMutation(saveProduct)
+  const { data } = useQuery<ProductType[]>(['register'], getAllProducts)
+  const dataLength = data ? data.length + 1 : 0;
 
   const handleRadioChange = (event: ChangeEvent<HTMLInputElement>) => {
     setSelectedRadio(event.target.value)
@@ -50,46 +60,65 @@ export const Register = () => {
       return ""
     }
 
-    newErrors.name = validateText("Plant name", formValues.name)
-    newErrors.subtitle = validateText("Plant subtitle", formValues.subtitle)
-    newErrors.type = validateText("Plant type", formValues.type)
+    newErrors.name = validateText("Plant name", formData.name)
+    newErrors.subtitle = validateText("Plant subtitle", formData.subtitle)
+    newErrors.type = validateText("Plant type", formData.type)
 
-    if (!formValues.price) newErrors.price = "Price is required"
-    if (!/^\d*\.?\d*$/.test(formValues.price))
+    if (!formData.price) newErrors.price = "Price is required"
+    if (!/^\d*\.?\d*$/.test(formData.price))
       newErrors.price = "Price should contain only numbers"
-    if (parseFloat(formValues.price) < 0)
+    if (parseFloat(formData.price) < 0)
       newErrors.price = "Price cannot be negative"
 
-    if (!formValues.discountPercentage)
+    if (!formData.discountPercentage)
       newErrors.discountPercentage = "Discount is required"
-    if (!/^\d*\.?\d*$/.test(formValues.discountPercentage))
+    if (!/^\d*\.?\d*$/.test(formData.discountPercentage))
       newErrors.discountPercentage =
         "Discount should contain only numbers"
-    if (parseFloat(formValues.discountPercentage) < 0)
+    if (parseFloat(formData.discountPercentage) < 0)
       newErrors.discountPercentage = "Discount cannot be negative"
 
-    if (!formValues.features) newErrors.features = "Features are required"
-    if (formValues.features.length < 10)
+    if (!formData.features) newErrors.features = "Features are required"
+    if (formData.features.length < 10)
       newErrors.features = "Features should be at least 10 characters long."
 
-    if (!formValues.description)
+    if (!formData.description)
       newErrors.description = "Description is required"
-    if (formValues.description.length < 10)
+    if (formData.description.length < 10)
       newErrors.description = "Description should be at least 10 characters long."
 
     setErrors(newErrors)
     return Object.keys(newErrors).every(key => !newErrors[key])
   }
 
+  const closeModal = () => {
+    setShowModal(false)
+}
+
   const handleSubmit = (event: FormEvent) => {
-    event.preventDefault()
+    event.preventDefault();
     if (validate()) {
       setShowModal(true)
     }
-  }
+    const { name, subtitle, label, type, price, discountPercentage, features, description } = ({ ...formData, label: selectedRadio });
+    const parsedPrice = parseFloat(price)
+    const parsedDiscountPercentage = parseFloat(discountPercentage)
+    const isInSale = (parsedDiscountPercentage === 0 || Number.isNaN(parsedDiscountPercentage) ? false : true)
+    const imgUrl = "../../src/assets/adams-rib.svg"
+    const id = dataLength.toString()
 
-  const closeModal = () => {
-    setShowModal(false)
+    mutate({ 
+      id,
+      name, 
+      subtitle, 
+      label: [label, type],
+      price: parsedPrice, 
+      isInSale,
+      discountPercentage: parsedDiscountPercentage, 
+      features, 
+      description,
+      imgUrl
+    })
   }
 
   return (
@@ -112,7 +141,7 @@ export const Register = () => {
               name="name"
               id="name"
               placeholder="Echinocereus Cactus"
-              value={formValues.name}
+              value={formData.name}
               onChange={handleInputChange}
               className={`py-3 px-4 rounded border-[1.5px] ${
                 errors.name ? "border-red-500" : "border-inputBorders"
@@ -128,7 +157,7 @@ export const Register = () => {
               name="subtitle"
               id="subtitle"
               placeholder="A majestic addition to your plant collection"
-              value={formValues.subtitle}
+              value={formData.subtitle}
               onChange={handleInputChange}
               className={`py-3 px-4 rounded border-[1.5px] ${
                 errors.subtitle ? "border-red-500" : "border-inputBorders"
@@ -146,7 +175,7 @@ export const Register = () => {
               name="type"
               id="type"
               placeholder="Cactus"
-              value={formValues.type}
+              value={formData.type}
               onChange={handleInputChange}
               className={`py-3 px-4 rounded border-[1.5px] ${
                 errors.type ? "border-red-500" : "border-inputBorders"
@@ -164,7 +193,7 @@ export const Register = () => {
                   name="price"
                   id="price"
                   placeholder="$139.99"
-                  value={formValues.price}
+                  value={formData.price}
                   onChange={handleInputChange}
                   className={`py-3 px-4 rounded border-[1.5px] ${
                     errors.price ? "border-red-500" : "border-inputBorders"
@@ -188,7 +217,7 @@ export const Register = () => {
                   name="discountPercentage"
                   id="discountPercentage"
                   placeholder="20%"
-                  value={formValues.discountPercentage}
+                  value={formData.discountPercentage}
                   onChange={handleInputChange}
                   className={`py-3 px-4 rounded border-[1.5px] ${
                     errors.discountPercentage
@@ -266,7 +295,7 @@ export const Register = () => {
               name="features"
               id="features"
               placeholder="Species: Echinocereus..."
-              value={formValues.features}
+              value={formData.features}
               onChange={handleInputChange}
               className={`py-3 px-4 h-32 rounded border-[1.5px] ${
                 errors.features ? "border-red-500" : "border-inputBorders"
@@ -283,7 +312,7 @@ export const Register = () => {
               name="description"
               id="description"
               placeholder="Ladyfinger cactus..."
-              value={formValues.description}
+              value={formData.description}
               onChange={handleInputChange}
               className={`py-3 px-4 h-32 rounded border-[1.5px] ${
                 errors.description ? "border-red-500" : "border-inputBorders"
@@ -295,9 +324,11 @@ export const Register = () => {
 
             <button
               type="submit"
-              className="w-full py-3.5 bg-moss rounded text-white font-bold transition-all mt-16 hover:opacity-75"
+              className={`w-full py-3.5 bg-moss rounded text-white font-bold transition-all hover:opacity-75 flex items-center justify-center ${
+                isLoading ? 'cursor-not-allowed' : ''
+              }`}
             >
-              Register
+              {isLoading ? <span className="flex gap-x-2">Loading... <Loading size={24} /></span> : "Register"}
             </button>
           </form>
 
