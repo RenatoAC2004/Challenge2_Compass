@@ -212,7 +212,7 @@ export const Register = () => {
                   } bg-transparent`}
                 />
                 {errors.discountPercentage && (
-                  <p className="text-red-500">{errors.discountPercentage}</p>
+                  <p className="text-red-500">{errors.price}</p>
                 )}
               </div>
               
