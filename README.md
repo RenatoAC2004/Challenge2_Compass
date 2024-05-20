@@ -26,6 +26,12 @@
 
 <section>🚩 Do not close the terminal that runs json-server. It runs the page database.</section>
 
+## 🎨Layout
+
+![image](https://github.com/RenatoAC2004/Challenge2_Compass/assets/102860356/177c84bb-d818-4eb5-92aa-d599b8d37dfb)
+
+
+
 ## 🛠️ Technologies
 
 <img src="https://skillicons.dev/icons?i=html,ts,react,tailwindcss,git,figma,nodejs" />

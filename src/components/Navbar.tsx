@@ -42,16 +42,16 @@ const Navbar = () => {
       >
         <img src="../../src/assets/icon/Logo.svg" alt="Logo" />
         <div className="hidden p-4 font-raleway gap-x-4 md:flex">
-          <Link to="/" className={`px-3hover:font-bold ${pathname === '/' ? 'text-primaryAvacado' : ''}`}>
+          <Link to="/" className={`px-3 hover:font-bold ${pathname === '/' ? 'text-primaryAvacado' : ''}`}>
             Home
           </Link>
-          <Link to="/register" className={`px-3hover:font-bold ${pathname === '/register' ? 'text-primaryAvacado' : ''}`}>
+          <Link to="/register" className={`px-3 hover:font-bold ${pathname === '/register' ? 'text-primaryAvacado' : ''}`}>
             Register
           </Link>
-          <Link to="/products" className={`px-3hover:font-bold ${pathname === '/products' ? 'text-primaryAvacado' : ''}`}>
+          <Link to="/products" className={`px-3 hover:font-bold ${pathname === '/products' ? 'text-primaryAvacado' : ''}`}>
             Products
           </Link>
-          <Link to="/aboutus" className={`px-3hover:font-bold ${pathname === '/aboutus' ? 'text-primaryAvacado' : ''}`}>
+          <Link to="/aboutus" className={`px-3 hover:font-bold ${pathname === '/aboutus' ? 'text-primaryAvacado' : ''}`}>
             About us
           </Link>
         </div>
