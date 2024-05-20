@@ -14,7 +14,15 @@ export const Product = () => {
   const fetchProduct = () => getProduct(productId)
   const { data, isLoading } = useQuery<ProductType>(`product-${productId}`, fetchProduct)
   
-  if(isLoading) return <Loading size={20} />
+  if(isLoading)if(isLoading) return (
+    <div className='w-full h-screen justify-center relative'>
+        <Navbar />
+        <div className='w-full flex justify-center items-center py-[20rem]'>
+        <Loading size={34} />
+        </div>
+        <Footer /> 
+      </div>
+  )
     
   if(!data) return <div>errorpage</div>
 
