@@ -40,7 +40,7 @@ const Navbar = () => {
           scrolled ? "bg-white border-b-2 border-gray-200 shadow-lg" : ""
         }`}
       >
-        <img src="../../src/assets/Logo.svg" alt="Logo" />
+        <img src="../../src/assets/icon/Logo.svg" alt="Logo" />
         <div className="hidden p-4 font-raleway gap-x-4 md:flex">
           <Link to="/" className={`px-3hover:font-bold ${pathname === '/' ? 'text-primaryAvacado' : ''}`}>
             Home

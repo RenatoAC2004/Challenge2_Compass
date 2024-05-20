@@ -10,26 +10,35 @@ import MainButton from "../components/MainButton"
 export const Product = () => {
   const { productId = "" } = useParams()
   const fetchProduct = () => getProduct(productId)
-  const { data, isLoading } = useQuery<ProductType>(
-    `product-${productId}`,
-    fetchProduct
-  )
+  const { data, isLoading } = useQuery<ProductType>(`product-${productId}`, fetchProduct, {
+    retry: false
+  });
 
-  if (isLoading)
-    if (isLoading)
-      return (
-        <div className="w-full h-screen justify-center relative">
-          <Navbar />
-          <div className="w-full flex justify-center items-center py-[20rem]">
-            <Loading size={34} />
-          </div>
-          <Footer />
+  if (isLoading) {
+    return (
+      <div className='w-full h-screen justify-center relative'>
+        <Navbar />
+        <div className='w-full flex justify-center items-center py-[20rem]'>
+          <Loading size={34} />
         </div>
-      )
+        <Footer />
+      </div>
+    );
+  }
 
-  if (!data) return <div>errorpage</div>
-
-  const { imgUrl, name, description, label, price, features, subtitle } = data
+  if (!data) {
+    return (
+      <div className='w-full h-screen justify-center relative'>
+        <Navbar />
+        <div className='w-full flex justify-center items-center py-[20rem]'>
+          <p>PDP unavailable</p>
+        </div>
+        <Footer />
+      </div>
+    );
+  }
+  
+  const {imgUrl, name, description, label, price, features, subtitle} = data
 
   return (
     <section>

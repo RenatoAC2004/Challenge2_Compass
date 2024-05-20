@@ -19,7 +19,7 @@ const AboutUs = () => {
             <img src={person.imgSrc} alt={person.name} className="w-48 h-48 object-cover transition-transform hover:scale-125 rounded-lg shadow-xl mb-3"/>
             <section className="text-center">{person.name}</section>
             <a href={person.github} target="_blank" rel="noopener noreferrer" className="hover:grayscale transition-transform hover:scale-150 mt-2">
-              <img src="/src/assets/github.svg" alt="GitHub" className="w-8 h-8"/>
+              <img src="/src/assets/icon/github.svg" alt="GitHub" className="w-8 h-8"/>
             </a>
           </div>
         ))}

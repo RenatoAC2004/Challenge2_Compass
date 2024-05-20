@@ -17,7 +17,7 @@ export const StepsSection = () => {
       lg:items-start xl:gap-x-20 lg:flex-row "
       >
         <div className="flex flex-col gap-y-6 items-center lg:gap-y-12 lg:w-1/3">
-          <img src="src\assets\watering.svg" alt="Watering" className="w-fit" />
+          <img src="src\assets\icon\watering.svg" alt="Watering" className="w-fit" />
           <p className="font-lato font-bold text-2xl">Watering</p>
           <p className="font-raleway text-center text-textSecondary">
             water your plants when the top inch of soil feels dry to the touch.
@@ -25,7 +25,7 @@ export const StepsSection = () => {
           </p>
         </div>
         <div className="flex flex-col gap-y-6 items-center lg:gap-y-12 lg:w-1/3">
-          <img src="src\assets\sunlight.svg" alt="Sunlight" className="w-fit" />
+          <img src="src\assets\icon\sunlight.svg" alt="Sunlight" className="w-fit" />
           <p className="font-lato font-bold text-2xl">Sunlight</p>
           <p className="font-raleway text-center text-textSecondary">
             Most plants need adequate sunlight to thrive. Place your plants in
@@ -35,7 +35,7 @@ export const StepsSection = () => {
         </div>
         <div className="flex flex-col gap-y-6 items-center lg:gap-y-12 lg:w-1/3">
           <img
-            src="src\assets\nutrients.svg"
+            src="src\assets\icon\nutrients.svg"
             alt="Nutrients and Fertilizing"
             className="w-fit"
           />
