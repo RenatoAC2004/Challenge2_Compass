@@ -7,6 +7,7 @@ import { ProtectRoute } from "./ProtectRoute";
 import AboutUs from "../pages/AboutUs";
 import { AllProducts } from "../pages/AllProducts";
 import { useEffect } from "react";
+import Error from "../pages/Error";
 
 export const MainRoutes = () => {
 
@@ -30,7 +31,7 @@ export const MainRoutes = () => {
           <Route path="/register" element={<Register />} />
           <Route path="/aboutus" element={<AboutUs />} />
           <Route path="/products" element={<AllProducts />} />
-          <Route path="*" />
+          <Route path="*" element={<Error/>}/>
         </Route>
       </Routes>
     </>
